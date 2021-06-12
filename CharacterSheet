@@ -1,0 +1,114 @@
+import random
+
+
+class Character:
+    # Attributes
+    def __init__(self, name, profession):
+        self.name = name
+        self.profession = profession
+        # Characteristics
+        self.hp = 1
+        self.strength = 0
+        self.con = 0
+        self.size = 0
+        self.dex = 0
+        self.app = 0
+        self.edu = 0
+        self.int = 0
+        self.pow = 0
+        self.sanity = 0
+        # Investigator Skills
+        self.accounting = 5
+        self.anthropology = 1
+        self.appraise = 5
+        self.archeology = 1
+        self.artNCraft = 5
+        self.charm = 15
+        self.climb = 20
+        self.creditRate = 0
+        self.cthuluMyth = 0
+        self.disguise = 5
+        self.dodge = self.dex // 2
+        self.driveAuto = 20
+        self.elecRepair = 10
+        self.fastTalk = 5
+        self.fightingBrawl = 25
+        self.firearmsHand = 20
+        self.firearmsRifle = 25
+        self.firstAid = 30
+        self.history = 5
+        self.intimidate = 15
+        self.jump = 20
+        self.languageOther = 1
+        self.languageOwn = self.edu
+        self.law = 5
+        self.libraryUse = 20
+        self.listen = 20
+        self.locksmith = 1
+        self.mechRepair = 10
+        self.medicine = 1
+        self.naturalWorld = 10
+        self.navigate = 10
+        self.occult = 5
+        self.opHvMach = 1
+        self.persuade = 1
+        self.pilot = 1
+        self.psychology = 10
+        self.psychoAnalyze = 1
+        self.ride = 5
+        self.science = 1
+        self.sleightOfHand = 10
+        self.spotHidden = 25
+        self.stealth = 20
+        self.survival = 10
+        self.swim = 20
+        self.throw = 20
+        self.throw = 20
+        self.track = 10
+
+    def IsProfessor(self):
+        # Set Characteristics based on Profession
+        self.hp = 1
+        self.strength = 40
+        self.con = 50
+        self.size = 50
+        self.dex = 50
+        self.app = 60
+        self.edu = 70
+        self.int = 70
+        self.pow = 60
+        self.sanity = self.pow
+        self.dodge = self.dex // 2
+        self.hp = (self.size + self.con) // 10
+        self.languageOther = 40
+        self.languageOwn = 40
+        self.libraryUse = 60
+        self.psychology = 70
+        self.medicine = 40
+        self.psychoAnalyze = 50
+        self.creditRate = 50
+
+    def AssignAttributes(self):
+        if self.profession == "Professor":
+            print("...Assigning Professor Attributes...")
+            self.IsProfessor()
+            print("Strength = " + str(self.strength))
+            print("HP = " + str(self.hp))
+
+    def dexCheck(self):
+        diceRoll = random.randint(0, 100)
+        print("The Roll " + str(diceRoll) + "\n")
+        print(self.name + "\'s dexterity is " + str(self.dex))
+        print("So you need to roll under a " + str(self.dex) + " to succeed this check")
+        input("Press Enter to roll...")
+
+        if diceRoll <= self.dex:
+            passOrFail = True
+            print("You rolled a " + str(diceRoll) + "! You succeed the check!")
+        elif diceRoll >= self.dex:
+            passOrFail = False
+            print("You rolled a " + str(diceRoll) + "! You have failed the check!")
+
+        input("Press Enter to continue...")
+
+        return passOrFail
