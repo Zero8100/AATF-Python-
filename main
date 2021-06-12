@@ -1,0 +1,43 @@
+# Import the story and character elements
+from Story import MainStory
+from CharacterSheet import Character
+
+print("Welcome to Alone Against the Flames! \n"
+      "This is a horror story set in the 1920s where you are the main character,\n"
+      "and your choices determine the outcome. It is also designed to\n"
+      "lead you through the basic rules of Call of Cthulu in a gradual and\n"
+      "entertaining fashion. Although most such adventures are played\n"
+      "with your friends, this one is just for you.\n\n")
+
+characterName = input("Please Enter your Character's Name: ")
+
+professionSelect = input("Please select " + characterName + "\'s" + " Profession: \n"
+                                                                    "(1) Professor \n"
+                                                                    "(2) Journalist \n"
+                                                                    "(3) Private Investigator \n"
+                                                                    "Enter number of Profession Selected: ")
+if professionSelect == "1":
+    characterProf = "Professor"
+if professionSelect == "2":
+    characterProf = "Author"
+if professionSelect == "3":
+    characterProf = "Private Eye"
+
+mainChar = Character(characterName, characterProf)
+print(mainChar.name)
+print(mainChar.profession)
+print("Starting Strength = " + str(mainChar.strength))
+print("Starting HP = " + str(mainChar.hp))
+Character.AssignAttributes(mainChar)
+# Start of story
+newStory = MainStory()
+
+print(newStory.step30)
+
+
+skillCheck = mainChar.dexCheck()
+
+print(str(skillCheck))
+
+
+exit(0)
