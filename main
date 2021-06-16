@@ -44,8 +44,7 @@ while gameController == True:
 
     death = False
     step = 1
-    while death == False or step != "0":
-        death = False
+    while death == False or step != 0:
         gameplay = newStory.StoryStep(step, mainChar, newDict)
         step = gameplay
         death = mainChar.IsDead(newDict, "HP")
@@ -55,6 +54,7 @@ while gameController == True:
         gameController = True
     if playGame == "N" or playGame == "n":
         gameController = False
+
 
 print(gameplay)
 
