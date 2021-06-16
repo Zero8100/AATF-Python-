@@ -5,6 +5,7 @@ class Character:
     # Attributes
     def __init__(self, name, profession):
         self.disadvantage = False
+        self.inAFight = False
         self.hasKnife = False
         self.name = name
         self.profession = profession
@@ -72,6 +73,7 @@ class Character:
 
     def createDict(self):
         dictionary = {
+            "inAFight": self.inAFight,
             "Disadvantage": self.disadvantage,
             "HasKnife": self.hasKnife,
             "HP": self.hp,
@@ -81,7 +83,15 @@ class Character:
             "Con": self.con,
             "ConStr": "Constitution",
             "Size": self.size,
-            "SizeStr": "Size"
+            "SizeStr": "Size",
+            "Arch": self.archeology,
+            "ArchStr": "Archeology",
+            "SpotHidden": self.spotHidden,
+            "SpotHiddenStr": "Spot Hidden",
+            "NaturalWorld": self.naturalWorld,
+            "NaturalWorldStr": "Natural World",
+            "Luck": self.luck,
+            "LuckStr": "Luck"
         }
         return dictionary
 
@@ -112,34 +122,73 @@ class Character:
             print("...Assigning Professor Attributes...")
             self.IsProfessor()
 
-    def SkillCheck(self, dictionary, desc, value):
+    def SkillCheck(self, dictionary, desc, value, level):
         diceRoll = random.randint(0, 100)
+        hardRate = dictionary[value] // 2
+        extremeRate = dictionary[value] // 4
 
-        if dictionary["Disadvantage"] == True:
+        if dictionary["Disadvantage"] is True:
             diceRoll2 = random.randint(0, 100)
             if diceRoll2 > diceRoll:
                 diceRoll = diceRoll2
 
         print(self.name + "\'s " + dictionary[desc] + " is " + str(dictionary[value]))
-        print("So you need to roll a " + str(dictionary[value]) + " or under to succeed this check")
-        input("Press Enter to roll the dice...")
+        # Normal Check
+        if level == 1:
+            print("So you need to roll a " + str(dictionary[value]) + " or under to succeed this check")
+            input("Press Enter to roll the dice...")
 
-        if diceRoll <= dictionary[value]:
-            passOrFail = 1
-            levelOfSuccess = "Success"
+            if diceRoll <= dictionary[value]:
+                passOrFail = 1
+                levelOfSuccess = "Success"
+                if diceRoll <= dictionary[value] // 2:
+                    passOrFail = 2
+                    levelOfSuccess = "Hard Success"
+                elif diceRoll <= dictionary[value] // 4:
+                    passOrFail = 3
+                    levelOfSuccess = "Extreme Success"
 
-            if diceRoll <= dictionary[value] // 2:
+                print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
+
+            elif diceRoll >= dictionary[value]:
+                passOrFail = 4
+                print("You rolled a " + str(diceRoll) + "! You have failed the check!")
+        # Hard Success Required
+        if level == 2:
+            print(self.name + " needs a hard success to pass this check.")
+            print("So you need to roll a " + str(hardRate) + " or under to succeed this check")
+            input("Press Enter to roll the dice...")
+            if diceRoll <= dictionary[value]:
+                passOrFail = 1
+                print("You rolled a " + str(diceRoll) + "! You have failed the check!")
+            if diceRoll <= hardRate:
                 passOrFail = 2
                 levelOfSuccess = "Hard Success"
-            elif diceRoll <= dictionary[value] // 4:
+                print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
+            elif diceRoll <= extremeRate:
                 passOrFail = 3
                 levelOfSuccess = "Extreme Success"
-
-            print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
-
-        elif diceRoll >= dictionary[value]:
-            passOrFail = 4
-            print("You rolled a " + str(diceRoll) + "! You have failed the check!")
+                print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
+            elif diceRoll >= dictionary[value]:
+                passOrFail = 4
+                print("You rolled a " + str(diceRoll) + "! You have failed the check!")
+        if level == 3:
+            print(self.name + " needs an extreme success to pass this check.")
+            print("So you need to roll a " + str(extremeRate) + " or under to succeed this check")
+            input("Press Enter to roll the dice...")
+            if diceRoll <= dictionary[value]:
+                passOrFail = 1
+                print("You rolled a " + str(diceRoll) + "! You have failed the check!")
+            if diceRoll <= hardRate:
+                passOrFail = 2
+                print("You rolled a " + str(diceRoll) + "! You have failed the check!")
+            elif diceRoll <= extremeRate:
+                passOrFail = 3
+                levelOfSuccess = "Extreme Success"
+                print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
+            elif diceRoll >= dictionary[value]:
+                passOrFail = 4
+                print("You rolled a " + str(diceRoll) + "! You have failed the check!")
 
         input("Press Enter to continue...\n")
 
