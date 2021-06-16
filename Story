@@ -1,6 +1,7 @@
 # This page includes the story text and what the player options are
 import random
 
+
 class MainStory:
     def __init__(self):
         self.step1 = """The sun is high in the sky, a merciless ball of heat. You feel
@@ -34,7 +35,7 @@ class MainStory:
 
         self.step3 = """Your morning exertions have left you hungry. You roam the
 streets of Emberhead looking for sustenance. There is nothing
-resembling the busy cafés of your hometown, or anything that
+resembling the busy cafes of your hometown, or anything that
 might be called a restaurant.
 It is beginning to look like you will have to get supplies from
 the general store when May Ledbetter comes down the street
@@ -61,7 +62,7 @@ her mother’s leg. Her eyes implore you to silence."""
 
         self.step4 = """After a moment, you hear footsteps inside the house. A bolt is
 drawn back and the wooden door swings open. A figure with loose
-curls and a rough-looking housedress peers at you. Her gaze takes
+curls and a rough-looking Housedress peers at you. Her gaze takes
 in your traveling suit and your cases. Her voice has a slight Irish lilt.
 “Hello. Should I take it as you’re looking for a room for the
 night?”
@@ -3116,6 +3117,8 @@ And among the flames you will dance. """
         # The End.
 
     def StoryStep(self, step, character, dictionary):
+        # Initialize nextStep so if not a valid selection it will return to the same step
+        nextStep = step
 
         if step == 1:
             # Go to 263.
@@ -3286,7 +3289,7 @@ And among the flames you will dance. """
             # If you fail, go to 37.
             print(self.step17)
             print("...Make a spot Hidden Roll...")
-            check = character.skillCheck(dictionary, dictionary["spotHiddenStr"], dictionary["spotHidden"])
+            check = character.skillCheck(dictionary, dictionary["spotHiddenStr"], dictionary["spotHidden"], 1)
             if check < 4:
                 nextStep = 30
             elif check == 4:
@@ -3412,7 +3415,7 @@ And among the flames you will dance. """
             # Make a Natural World roll. If you succeed, go to 35. If you fail,
             # go to 41.
             print(self.step28)
-            check = character.skillCheck(dictionary, "NaturalWorldStr", "NaturalWorld")
+            check = character.skillCheck(dictionary, "NaturalWorldStr", "NaturalWorld", 1)
             if check < 4:
                 nextStep = 35
             elif check == 4:
@@ -3433,7 +3436,7 @@ And among the flames you will dance. """
                 nextStep = 120
             if choice == "2":
                 if dictionary["Size"] > dictionary["Dex"]:
-                    check = character.skillCheck(dictionary, "NaturalWorldStr", "NaturalWorld")
+                    check = character.skillCheck(dictionary, "NaturalWorldStr", "NaturalWorld", 1)
                     if check < 4:
                         nextStep = 42
                     elif check == 4:
@@ -3441,5 +3444,540 @@ And among the flames you will dance. """
                 elif dictionary["Size"] < dictionary["Dex"]:
                     nextStep = 42
             input("Press Enter to continue...")
+        elif step == 30:
+            # You may check-mark the small box beside the Spot Hidden skill.
+            # Now go to 37.
+            print(self.step30)
+            nextStep = 37
+            input("Press Enter to continue...")
+        elif step == 31:
+            # Make a Charm roll. If you succeed, go to 39
+            # If you fail, go to 51.
+            print(self.step31)
+            check = character.skillCheck(dictionary, "CharmStr", "Charm", 1)
+            if check < 4:
+                nextStep = 39
+            elif check == 4:
+                nextStep = 51
+            input("Press Enter to continue...")
+        elif step == 32:
+            # To secure your door with a chair and get some sleep, go to 58
+            # To stay awake all night, go to 52.
+            print(self.step32)
+            print("""Please Select an Option:
+                                                              1) Secure your door with a chair and get some sleep
+                                                              2) To stay awake all night\n""")
+            choice = input("Selection: ")
+
+            if choice == "1":
+                nextStep = 58
+            if choice == "2":
+                nextStep = 52
+            input("Press Enter to continue...")
+        elif step == 33:
+            # To throw all your remaining strength against the bonds, go to 44
+            # To wait and see what happens, go to 40.
+            print(self.step33)
+            print("""Please Select an Option:
+                                                              1) Throw all your remaining strength against the bonds
+                                                              2) Wait and see what happens\n""")
+            choice = input("Selection: ")
+
+            if choice == "1":
+                nextStep = 44
+            if choice == "2":
+                nextStep = 40
+            input("Press Enter to continue...")
+        elif step == 34:
+            # Make a Ride roll. You may have a bonus die; roll the “tens”
+            # percentage die twice and take the lower result. If you succeed, go to
+            # 46. Otherwise, go to 25.
+            print(self.step34)
+
+            check = character.skillCheck(dictionary, "RideStr", "Ride", 1)
+            if check < 4:
+                nextStep = 46
+            elif check == 4:
+                nextStep = 25
+            input("Press Enter to continue...")
+        elif step == 35:
+            # Now go to 54
+            print(self.step35)
+            nextStep = 54
+            input("Press Enter to continue...")
+        elif step == 36:
+            # Make a Climb roll. If you succeed, go to 48.
+            # If you fail, go to 55.
+            print(self.step36)
+            check = character.skillCheck(dictionary, "ClimbStr", "Climb", 1)
+            if check < 4:
+                nextStep = 46
+            elif check == 4:
+                nextStep = 25
+            input("Press Enter to continue...")
+        elif step == 37:
+            # Go to 43
+            print(self.step37)
+            nextStep = 43
+            input("Press Enter to continue...")
+        elif step == 38:
+            # Go to 233
+            print(self.step38)
+            nextStep = 233
+            input("Press Enter to continue...")
+        elif step == 39:
+            # Now go to 63
+            print(self.step39)
+            nextStep = 63
+            input("Press Enter to continue...")
+        elif step == 40:
+            # If you have learned a strange chant and wish to try it, this is the
+            # moment. Otherwise go to 65
+            print(self.step40)
+            if dictionary["Chant"] is True:
+                nextStep = 50
+            else:
+                nextStep = 65
+            input("Press Enter to continue...")
+        elif step == 41:
+            # To press on, go to 54
+            # To return to the safety of Emberhead, go to 47.
+            print(self.step41)
+            print("""Please Select an Option:
+             1) Press on
+             2) Return to the safety of Emberhead\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 54
+            if choice == "2":
+                nextStep = 47
+            input("Press Enter to continue...")
+        elif step == 42:
+            # Go to 61
+            print(self.step42)
+            nextStep = 61
+            input("Press Enter to continue...")
+        elif step == 43:
+            # To ask about the telegraph immediately, go to 56.
+            # To make small talk with Mr. Winters first, go to 49.
+            print(self.step43)
+            print("""Please Select an Option:
+                         1) Ask about the telegraph immediately
+                         2) Make small talk with Mr. Winters first\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 56
+            if choice == "2":
+                nextStep = 49
+            input("Press Enter to continue...")
+        elif step == 44:
+            # Make a Hard STR roll. If you succeed, go to 53.
+            # If you fail, go to 40.
+            print(self.step44)
+            check = character.skillCheck(dictionary, "StrengthStr", "Strength", 2)
+            if check == 2 or check == 3:
+                nextStep = 53
+            else:
+                nextStep = 40
+            input("Press Enter to continue...")
+        elif step == 45:
+            # Go to 64
+            print(self.step45)
+            nextStep = 64
+            input("Press Enter to continue...")
+        elif step == 46:
+            # Go to 25
+            print(self.step46)
+            nextStep = 25
+            input("Press Enter to continue...")
+        elif step == 47:
+            # Go to 11.
+            print(self.step47)
+            nextStep = 11
+            input("Press Enter to continue...")
+        elif step == 48:
+            # go to 61
+            print(self.step48)
+            nextStep = 61
+            input("Press Enter to continue...")
+        elif step == 49:
+            # Go to 56
+            print(self.step49)
+            nextStep = 56
+            input("Press Enter to continue...")
+        elif step == 50:
+            # Go to 270 (Has Chant)
+            print(self.step50)
+            nextStep = 270
+            input("Press Enter to continue...")
+        elif step == 51:
+            # Now go to 63.
+            print(self.step51)
+            nextStep = 63
+            input("Press Enter to continue...")
+        elif step == 52:
+            # Make a CON roll. If you fail, your skill rolls today suffer a penalty.
+            # Roll the “tens” percentage die twice and take the higher result. This
+            # does not apply to Luck, Sanity or damage rolls.
+            # Now go to 64.
+            print(self.step52)
+            check = character.skillCheck(dictionary, "ConStr", "Con", 1)
+            if check < 4:
+                dictionary["Disadvantage"] = True
+            nextStep = 64
+            input("Press Enter to continue...")
+        elif step == 53:
+            # Make a Hard Dodge roll. If you succeed, go to 109. If you fail,
+            # go to 123.
+            print(self.step53)
+            check = character.skillCheck(dictionary, "DodgeStr", "Dodge", 2)
+            if check == 2 or check == 3:
+                nextStep = 109
+            else:
+                nextStep = 123
+        elif step == 54:
+            # If you head up the hill to try to spot another settlement, go to 60
+            # If you try the track, go to 85.
+            # If you stick to the safety of the road, go to 103.
+            print(self.step54)
+            print("""Please Select an Option:
+                         1) Head up the hill to try to spot another settlement
+                         2) Try the track
+                         3) Stick to the safety of the road\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 60
+            if choice == "2":
+                nextStep = 85
+            if choice == "3":
+                nextStep = 103
+            input("Press Enter to continue...")
+        elif step == 55:
+            # Take 2D6 damage as you hit the ground. If this is equal to or
+            # greater than half of your full hit points, go to 67. If not, go to 73.
+            print(self.step55)
+            fullHealth = dictionary["Con"] + dictionary["Size"] // 10
+            halfTotalHealth = fullHealth // 2
+            diceRoll = random.randint(0, 12)
+            print("Ouch! You hit the ground taking " + str(diceRoll) + " damage!")
+            dictionary["HP"] = dictionary["HP"] - diceRoll
+            if diceRoll >= halfTotalHealth:
+                nextStep = 67
+            elif diceRoll < halfTotalHealth:
+                nextStep = 73
+            input("Press Enter to continue...")
+        elif step == 56:
+            # To thank Winters and leave, go to 180.
+            # To ask about his library, go to 62.
+            print(self.step56)
+            print("""Please Select an Option:
+                         1) Thank Winters and leave
+                         2) Ask about his library\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 180
+            if choice == "2":
+                nextStep = 62
+            input("Press Enter to continue...")
+        elif step == 57:
+            # Make a Spot Hidden roll. If you succeed, go to 69. Otherwise,
+            # go to 25.
+            print(self.step57)
+            check = character.skillCheck(dictionary, "SpotHiddenStr", "SpotHidden", 1)
+            if check < 4:
+                nextStep = 69
+            else:
+                nextStep = 25
+            input("Press Enter to continue...")
+        elif step == 58:
+            # You may restore 1 hit point if you have been wounded. Go to 64.
+            print(self.step58)
+            if dictionary["HP"] < character.hp:
+                print("You gained back 1 HP!")
+                dictionary["HP"] += 1
+            nextStep = 64
+            input("Press Enter to continue...")
+        elif step == 59:
+            # You lost 1 hit point in the accident. Mark the loss on your
+            # investigator sheet, but keep track of the original value. You will
+            # eventually heal back up to this value. If you drop to 0 hit points, you
+            # will fall unconscious and you might die.
+            # Now go to 71.
+            print(self.step59)
+            print("You lost 1 hit point in the accident!")
+            dictionary["HP"] -= 1
+            nextStep = 71
+            input("Press Enter to continue...")
+        elif step == 60:
+            # You may make an Archaeology roll. If you succeed, go to 66.
+            # Otherwise, go to 72.
+            print(self.step60)
+            check = character.skillCheck(dictionary, "ArchStr", "Arch", 1)
+            if check < 4:
+                nextStep = 66
+            else:
+                nextStep = 72
+            input("Press Enter to continue...")
+        elif step == 61:
+            # Go to 120
+            print(self.step61)
+            nextStep = 120
+            input("Press Enter to continue...")
+        elif step == 62:
+            # To take the time for some research in the library, go to 68.
+            # To leave while it is still light outside, go to 180.
+            print(self.step62)
+            print("""Please Select an Option:
+                         1) Take the time for some research in the library
+                         2) Leave while it is still light outside\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 68
+            if choice == "2":
+                nextStep = 180
+            input("Press Enter to continue...")
+        elif step == 63:
+            # Now go to 154
+            print(self.step63)
+            nextStep = 154
+            input("Press Enter to continue...")
+        elif step == 64:
+            # If you were involved in a fight in the village last night and want
+            # to investigate the aftermath, go to 70. Otherwise, go to 78.
+            print(self.step64)
+            if dictionary["inAFight"] is True:
+                choice = input("Since you were involved in a fight in the village last night,"
+                               "would you like to investigate the aftermath? (Y or N)")
+                if choice == "Y" or choice == "y":
+                    nextStep = 70
+                if choice == "N" or choice == "n":
+                    nextStep = 78
+            else:
+                nextStep = 78
+            input("Press Enter to continue...")
+        elif step == 65:
+            # Take 1D6 hit points of damage from the fire. If this reduces you
+            # to zero, you collapse and are burned to death! The End. Otherwise,
+            # make a STR roll. If you succeed, go to 93. If you fail, go to 77.
+            print(self.step65)
+            diceRoll = random.randint(0, 6)
+            print("You take " + str(diceRoll) + " damage from the fire!")
+            dictionary["HP"] -= diceRoll
+            if dictionary["HP"] <= 0:
+                print("You collapse and are burned to death! The End")
+                nextStep = 0
+            else:
+                check = character.skillCheck(dictionary, "StrengthStr", "Strength", 1)
+                if check < 4:
+                    nextStep = 93
+                else:
+                    nextStep = 77
+            input("Press Enter to continue...")
+        elif step == 66:
+            # Now go to 79
+            print(self.step66)
+            nextStep = 79
+            input("Press Enter to continue...")
+        elif step == 67:
+            # You have received a major wound. Make a CON roll. If you succeed,
+            # go to 82. If you fail, or if your hit points have reached zero, go to 92.
+            print(self.step67)
+            print("You have suffered a major wound and on the verge of death!")
+            check = character.skillCheck(dictionary, "StrengthStr", "Strength", 1)
+            if check < 4:
+                nextStep = 82
+            else:
+                nextStep = 92
+            input("Press Enter to continue...")
+        elif step == 68:
+            # To read about the history of the area, go to 74.
+            # To read about the festival, go to 81.
+            # To read something from the sciences, go to 88.
+            # To read some of the weird fiction, go to 94.
+            print(self.step68)
+            print("""Please Select an Option: 
+                                  1) Read about the history of the area
+                                  2) Read about the festival
+                                  3) Read something from the sciences
+                                  4) Read some of the weird fiction\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 74
+            elif choice == "2":
+                nextStep = 81
+            elif choice == "3":
+                nextStep = 88
+            elif choice == "4":
+                nextStep = 94
+        elif step == 69:
+            # Now go to 25
+            print(self.step69)
+            nextStep = 25
+            input("Press Enter to continue...")
+        elif step == 70:
+            # Go to 78
+            print(self.step70)
+            nextStep = 78
+            input("Press Enter to continue...")
+        elif step == 71:
+            # Choose an occupation for your character from the following options:
+            # If you are an Antiquarian, go to 102.
+            # If you are a Doctor of Medicine, go to 226.
+            # If you are a Journalist, go to 239.
+            # If you are a Private Investigator, go to 249.
+            # If you are a Professor, go to 265.
+            print(self.step71)
+            if dictionary["Prof"] == "Professor":
+                nextStep = 265
+            elif dictionary["Prof"] == "PI":
+                nextStep = 265
+            elif dictionary["Prof"] == "Journalist":
+                nextStep = 239
+            # elif dictionary["Prof"] == "Doctor":
+            # nextStep = 226
+            # elif dictionary["Prof"] == "Antiquarian":
+            # nextStep = 102
+            input("Press Enter to continue...")
+        elif step == 72:
+            # Go to 79
+            print(self.step72)
+            nextStep = 79
+            input("Press Enter to continue...")
+        elif step == 73:
+            # If your hit points have reached zero, go to 92. Otherwise, go to 82
+            print(self.step73)
+            if dictionary["HP"] <= 0:
+                nextStep = 92
+            else:
+                nextStep = 82
+            input("Press Enter to continue...")
+        elif step == 74:
+            # Now go to 99
+            print(self.step74)
+            nextStep = 99
+            input("Press Enter to continue...")
+        elif step == 75:
+            # Go to 86
+            print(self.step75)
+            nextStep = 86
+            input("Press Enter to continue...")
+        elif step == 76:
+            # To now get some sleep, go to 58.
+            # To stay awake all night, go to 52.
+            print(self.step76)
+            print("""Please Select an Option: 
+                                              1) Get some sleep
+                                              2) Stay awake all night\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 74
+            elif choice == "2":
+                nextStep = 81
+            input("Press Enter to continue...")
+        elif step == 77:
+            # You have burned to death in the Beacon.
+            # Why not try again? By making different choices you may be able
+            # to escape or outwit the people of Emberhead.
+            # The End.
+            print(self.step76)
+            print("""You have burned to death in the Beacon.
+            Why not try again? By making different choices you may be able
+            to escape or outwit the people of Emberhead.
+            The End""")
+            nextStep = 0
+            input("Press Enter to continue...")
+        elif step == 78:
+            # You may now:
+            # —Search May Ledbetter’s bedroom; go to 83.
+            # —Go alone to the village hall: go to 126.
+            # —Take a closer look at the artisans’ courtyard: go to 219.
+            # —Spy on activity at the Beacon: go to 29.
+            # —Slip down to the east road and flee for good: go to 7.
+            print(self.step78)
+            print("""Please Select an Option: 
+                                    1) Search May Ledbetter’s bedroom
+                                    2) Go alone to the village hall
+                                    3) Take a closer look at the artisans’ courtyard
+                                    4) Spy on activity at the Beacon
+                                    5) Slip down to the east road and flee for good\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 83
+            elif choice == "2":
+                nextStep = 126
+            elif choice == "3":
+                nextStep = 219
+            elif choice == "4":
+                nextStep = 29
+            elif choice == "5":
+                nextStep = 7
+            input("Press Enter to continue...")
+        elif step == 79:
+            # Make a Hard Listen roll. If you succeed, go to 240. If you fail, go to 234.
+            print(self.step79)
+            check = character.skillCheck(dictionary, "ListenStr", "Listen", 2)
+            if check == 2 or check == 3:
+                nextStep = 240
+            else:
+                nextStep = 234
+            input("Press Enter to continue...")
+        elif step == 80:
+            # You have burned to death in the Beacon.
+            # Why not try again? By making different choices you may be able
+            # to escape or outwit the people of Emberhead.
+            # The End.
+            print(self.step79)
+            print("""You have burned to death in the Beacon.
+                        Why not try again? By making different choices you may be able
+                        to escape or outwit the people of Emberhead.
+                        The End""")
+            nextStep = 0
+            input("Press Enter to continue...")
+        elif step == 81:
+            # Now go to 99
+            print(self.step81)
+            nextStep = 99
+            input("Press Enter to continue...")
+        elif step == 82:
+            # Now go to 108
+            print(self.step82)
+            nextStep = 108
+            input("Press Enter to continue...")
+        elif step == 83:
+            # Make a Spot Hidden roll. If you succeed, go to 95. If you fail,
+            # go to 89.
+            print(self.step83)
+            check = character.skillCheck(dictionary, "SpotHiddenStr", "SpotHidden", 1)
+            if check < 4:
+                nextStep = 95
+            elif check == 4:
+                nextStep = 89
+            input("Press Enter to continue...")
+        elif step == 84:
+            # Go to 25
+            print(self.step84)
+            nextStep = 25
+            input("Press Enter to continue...")
+        elif step == 85:
+            # Make a Luck roll. If you succeed, turn to 91. If you fail, turn to 97
+            print(self.step83)
+            check = character.skillCheck(dictionary, "LuckStr", "Luck", 1)
+            if check < 4:
+                nextStep = 91
+            elif check == 4:
+                nextStep = 97
+            input("Press Enter to continue...")
+        elif step == 86:
+            # To return to the safety of the Ledbetter house, go to 100.
+            # To confront the dark figure, go to 121.
+            print(self.step86)
+            print("""Please Select an Option: 
+                                    1) Return to the safety of the Ledbetter house
+                                    2) Confront the dark figure\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 100
+            elif choice == "2":
+                nextStep = 121
 
         return nextStep
