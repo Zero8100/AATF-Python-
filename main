@@ -2,42 +2,60 @@
 from Story import MainStory
 from CharacterSheet import Character
 
-print("Welcome to Alone Against the Flames! \n"
-      "This is a horror story set in the 1920s where you are the main character,\n"
-      "and your choices determine the outcome. It is also designed to\n"
-      "lead you through the basic rules of Call of Cthulu in a gradual and\n"
-      "entertaining fashion. Although most such adventures are played\n"
-      "with your friends, this one is just for you.\n\n")
+gameController = True
 
-characterName = input("Please Enter your Character's Name: ")
-
-professionSelect = input("Please select " + characterName + "\'s" + " Profession: \n"
-                                                                    "(1) Professor \n"
-                                                                    "(2) Journalist \n"
-                                                                    "(3) Private Investigator \n"
-                                                                    "Enter number of Profession Selected: ")
-if professionSelect == "1":
-    characterProf = "Professor"
-if professionSelect == "2":
-    characterProf = "Author"
-if professionSelect == "3":
-    characterProf = "Private Eye"
-
-mainChar = Character(characterName, characterProf)
-print(mainChar.name)
-print(mainChar.profession)
-print("Starting Strength = " + str(mainChar.strength))
-print("Starting HP = " + str(mainChar.hp))
-Character.AssignAttributes(mainChar)
 # Start of story
 newStory = MainStory()
 
-print(newStory.step30)
+while gameController == True:
 
+    print("Welcome to Alone Against the Flames! \n"
+          "This is a horror story set in the 1920s where you are the main character,\n"
+          "and your choices determine the outcome. It is also designed to\n"
+          "lead you through the basic rules of Call of Cthulu in a gradual and\n"
+          "entertaining fashion. Although most such adventures are played\n"
+          "with your friends, this one is just for you.\n\n")
 
-skillCheck = mainChar.dexCheck()
+    characterName = input("Please Enter your Character's Name: ")
 
-print(str(skillCheck))
+    professionSelect = input("Please select " + characterName + "\'s" + " Profession: \n"
+                                                                        "(1) Professor \n"
+                                                                        "(2) Journalist \n"
+                                                                        "(3) Private Investigator \n"
+                                                                        "Enter number of Profession Selected: ")
 
+    if professionSelect == "1":
+        characterProf = "Professor"
+    if professionSelect == "2":
+        characterProf = "Author"
+    if professionSelect == "3":
+        characterProf = "Private Eye"
+
+    mainChar = Character(characterName, characterProf)
+    Character.AssignAttributes(mainChar)
+    newDict = mainChar.createDict()
+    print(mainChar.name + " the " + mainChar.profession + " has been selected.")
+    print("At any selection made, you may enter 0 instead to quit the game.")
+    playGame = input("Are you ready to play? ")
+    if playGame == "Y" or playGame == "y":
+        gameController = True
+    if playGame == "N" or playGame == "n":
+        gameController = False
+
+    death = False
+    step = 1
+    while death == False or step != "0":
+        death = False
+        gameplay = newStory.StoryStep(step, mainChar, newDict)
+        step = gameplay
+        death = mainChar.IsDead(newDict, "HP")
+
+    playGame = input("Would you like to play again(Y or N)? ")
+    if playGame == "Y" or playGame == "y":
+        gameController = True
+    if playGame == "N" or playGame == "n":
+        gameController = False
+
+print(gameplay)
 
 exit(0)
