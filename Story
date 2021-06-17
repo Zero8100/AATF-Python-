@@ -3534,7 +3534,7 @@ And among the flames you will dance. """
             # If you have learned a strange chant and wish to try it, this is the
             # moment. Otherwise go to 65
             print(self.step40)
-            if dictionary["Chant"] is True:
+            if dictionary["HasChant"] is True:
                 nextStep = 50
             else:
                 nextStep = 65
