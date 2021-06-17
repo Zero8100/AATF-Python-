@@ -2,13 +2,17 @@
 from Story import MainStory
 from CharacterSheet import Character
 
+# First initialized here to start the game
+# This is used later in the while loop to signal if the user wishes to keep playing
 gameController = True
 
-# Start of story
-newStory = MainStory()
 
-while gameController == True:
+while gameController is True:
 
+    # Creates New Story Object
+    newStory = MainStory()
+
+    # Intro Text
     print("Welcome to Alone Against the Flames! \n"
           "This is a horror story set in the 1920s where you are the main character,\n"
           "and your choices determine the outcome. It is also designed to\n"
@@ -16,8 +20,10 @@ while gameController == True:
           "entertaining fashion. Although most such adventures are played\n"
           "with your friends, this one is just for you.\n\n")
 
+    # Input - Allows user to name their character which gets stored in the player object
     characterName = input("Please Enter your Character's Name: ")
 
+    # Input - Allows user to select a profession, which impacts the stats assigned
     professionSelect = input("Please select " + characterName + "\'s" + " Profession: \n"
                                                                         "(1) Professor \n"
                                                                         "(2) Journalist \n"
@@ -31,31 +37,55 @@ while gameController == True:
     if professionSelect == "3":
         characterProf = "Private Eye"
 
+    # Takes name and profession to initialize a new character
     mainChar = Character(characterName, characterProf)
+
+    # Will check the profession selected and assign the proper attributes of selected profession
     Character.AssignAttributes(mainChar)
+
+    # Initializes new Dictionary to store all assigned stats need for the story
     newDict = mainChar.createDict()
+
+    # Output - created character
     print(mainChar.name + " the " + mainChar.profession + " has been selected.")
     print("At any selection made, you may enter 0 instead to quit the game.")
-    playGame = input("Are you ready to play? ")
+
+    # Input - Queries user to check if they are ready to play
+    # If input is No, this will quit the
+    playGame = input("Are you ready to start? ")
     if playGame == "Y" or playGame == "y":
         gameController = True
+    # Currently doesnt work
+    # Need to create character create loop so the player may choose a different character
+    # If created one is not desirable
     if playGame == "N" or playGame == "n":
         gameController = False
 
+    # Sets var death to False so Story loop can start
     death = False
+    # Sets step to 1 so story will start at beginning
     step = 1
-    while death == False or step != 0:
+
+    # Story Loop
+    # Will step through story using the returned step from the StoryStep() function into var gamePlay
+    # Store gamePlay into step for clarification of the var step used earlier
+    # Checks IsDead() every iteration of loop to make sure the character has not died
+    while death is False or step != 0:
+        # Takes in the story elements, nextStep, the character created, and dictionary for stat checking
         gameplay = newStory.StoryStep(step, mainChar, newDict)
         step = gameplay
         death = mainChar.IsDead(newDict, "HP")
 
+    # Input - Allows user to restart game loop if desired
+    # If Yes - will start at top
+    # If No - will exit program
     playGame = input("Would you like to play again(Y or N)? ")
     if playGame == "Y" or playGame == "y":
         gameController = True
     if playGame == "N" or playGame == "n":
         gameController = False
 
-
-print(gameplay)
+# Output - Exit text once done with game
+print("Thank you for playing! Hope you had fun!")
 
 exit(0)
