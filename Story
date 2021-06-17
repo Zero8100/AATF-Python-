@@ -4015,7 +4015,7 @@ And among the flames you will dance. """
             elif choice == "2":
                 nextStep = 120
             input("Press Enter to continue...")
-        elif step == 90:
+                elif step == 90:
             # You are casting a spell. You may commit up to 10 magic points
             # to this spell. If you have less than 10 magic points, you may spend
             # hit points on top of the magic points—but not so many that you are
@@ -4032,4 +4032,270 @@ And among the flames you will dance. """
             dictionary["SpellChance"] *= 10
             nextStep = 198
             input("Press Enter to continue...")
+        elif step == 91:
+            # Go to 79
+            print(self.step91)
+            nextStep = 79
+            input("Press Enter to continue...")
+        elif step == 92:
+            # You have bled to death from your wounds after falling from the
+            # cliffs at Emberhead!
+            # Why not try the adventure again? Different choices may change
+            # your story.
+            # The End.
+            print(self.step92)
+            print("""You have bled to death from your wounds after falling from the 
+            cliffs at Emberhead!
+            Why not try the adventure again? Different choices may change your story.
+            The End.""")
+            nextStep = 0
+            input("Press Enter to continue...")
+        elif step == 93:
+            # Take 1D6 hit points of damage from the fire. If this reduces you to
+            # zero, you collapse and are burned to death! The End. If not, go to 137.
+            print(self.step93)
+            damage = random.randint(1, 6)
+            dictionary["HP"] -= damage
+            if dictionary["HP"] <= 0:
+                print("""You collapse and are burned to death! 
+                The End.""")
+                nextStep = 0
+            else:
+                nextStep = 137
+            input("Press Enter to continue...")
+        elif step == 94:
+            # If you have lost Sanity, you may restore 1 point.
+            # Now go to 99.
+            print(self.step94)
+            startingSanity = character.pow
+            if dictionary["Sanity"] <= startingSanity:
+                print("You restore 1 HP!")
+                dictionary["HP"] += 1
+            nextStep = 99
+            input("Press Enter to continue...")
+        elif step == 95:
+            # To descend into the cellar, go to 114. If you would rather give this
+            # up, go to 120.
+            print(self.step95)
+            print("""Please Select an Option: 
+            1) Descend into the cellar
+            2) Give this up\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 114
+            elif choice == "2":
+                nextStep = 120
+            input("Press Enter to continue...")
+        elif step == 96:
+            # Make a Psychology roll. If you succeed, go to 106. Otherwise, go to 25
+            print(self.step96)
+            check = character.skillCheck(dictionary, "PsychStr", "Psych", 1)
+            if check < 4:
+                nextStep = 106
+            else:
+                nextStep = 25
+        elif step == 97:
+            # Lose 1D3 hit points. You can roll this with an ordinary six-sided
+            # dice; just divide your roll by two and round up. This is a significant
+            # wound, but fortunately it is not enough to render you unconscious.
+            # You may attempt a First Aid roll. If you succeed, restore 1 hit point
+            # and check-mark the small box beside the First Aid skill.
+            # Then go to 79.
+
+            print(self.step97)
+            print("""This is a significant wound, but fortunately it is not enough to render you unconscious.
+            Would you like to try some First Aid?\n""")
+            choice = input("Selection(Y or N): ")
+            if choice == "Y" or choice == "y":
+                check = character.skillCheck(dictionary, "FirstAidStr", "FirstAid", 1)
+                if check < 4:
+                    dictionary["HP"] += 1
+                    print("You restore 1 HP!")
+
+            nextStep = 79
+            input("Press Enter to continue...")
+        elif step == 98:
+            # To try to lose them amongst the buildings, go to 158.
+            # To run for it, go to 164.
+            print(self.step98)
+            print("""Please Select an Option: 
+            1) Try to lose them amongst the buildings
+            2) Run for it\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 158
+            elif choice == "2":
+                nextStep = 164
+            input("Press Enter to continue...")
+        elif step == 99:
+            # Make a Credit Rating roll. If you succeed, go to 111. If you fail,
+            # go to 105.
+            print(self.step99)
+            check = character.skillCheck(dictionary, "CreditRatingStr", "CreditRating", 1)
+            if check < 4:
+                nextStep = 111
+            else:
+                nextStep = 105
+            input("Press Enter to continue...")
+        elif step == 100:
+            # Go to 63.
+            print(self.step100)
+            nextStep = 63
+            input("Press Enter to continue...")
+        elif step == 101:
+            # Go to 108.
+            print(self.step101)
+            nextStep = 108
+            input("Press Enter to continue...")
+        elif step == 102:
+            # Null since character is selected in beginning
+            # Your Credit Rating skill is 20%.
+            # Your Occupation Skills are: Appraise, Art/Craft (specify a particular
+            # field), History, Library Use, Other Language (specify one), Spot
+            # Hidden, and one of either Charm, Fast Talk, Intimidate, or Persuade.
+            # You may also pick one other skill except Cthulhu Mythos as a personal
+            # specialty. Allocate the following values among these Occupation Skills,
+            # writing in the large square beside each: 70%, 60%, 60%, 50%, 50%,
+            # 50%, 40%, 40%. Ignore any starting value already mentioned on
+            # the investigator sheet.
+            # Then go to 128.
+            print(self.step102)
+            nextStep = 128
+            input("Press Enter to continue...")
+        elif step == 103:
+            # If you want to get a closer look at the bear, go to 110.
+            # If you remain motionless, go to 116.
+            # If you make a deliberate, slow retreat, go to 122.
+            print(self.step103)
+            print("""Please Select an Option: 
+            1) Get a closer look at the bear
+            2) Remain motionless
+            3) Make a deliberate, slow retreat \n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 110
+            elif choice == "2":
+                nextStep = 116
+            elif choice == "3":
+                nextStep = 122
+            input("Press Enter to continue...")
+        elif step == 104:
+            # Go to 205
+            print(self.step104)
+            nextStep = 205
+            input("Press Enter to continue...")
+        elif step == 105:
+            # Go to 180
+            print(self.step105)
+            nextStep = 180
+            input("Press Enter to continue...")
+        elif step == 106:
+            # Go to 25
+            print(self.step106)
+            nextStep = 25
+            input("Press Enter to continue...")
+        elif step == 107:
+            # Go to 152
+            print(self.step107)
+            nextStep = 152
+            input("Press Enter to continue...")
+        elif step == 108:
+            # To accept the drink, go to 104. To reject it, go to 113.
+            print(self.step108)
+            print("""Please Select an Option: 
+            1) Accept the Drink
+            2) Reject the Drink \n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 104
+            elif choice == "2":
+                nextStep = 113
+            input("Press Enter to continue...")
+        elif step == 109:
+            # Take 1D6 hit points of damage from the fire. If this reduces you to
+            # zero, you collapse and are burned to death! The End. If not, go to 137.
+            print(self.step109)
+            diceRoll = random.randint(1, 6)
+            print("You took " + str(diceRoll) + " damage from the fire!")
+            dictionary["HP"] -= diceRoll
+            if dictionary["HP"] <= 0:
+                print("You collapse and are burned to death!"
+                      "The End")
+                nextStep = 0
+            else:
+                nextStep = 137
+            input("Press Enter to continue...")
+        elif step == 110:
+            # Make an Extreme Stealth roll (you need to roll one-fifth of your
+            # Stealth skill or under). If you pass, go to 143. If you fail, go to 129.
+            # If you roll 96 or over, this is a Fumble: turn to 149.
+            print(self.step110)
+            check = character.skillCheck(dictionary, "StealthStr", "Stealth", 3)
+            if check == 3:
+                nextStep = 143
+            elif check == 1 or check == 2:
+                nextStep = 129
+            elif check == 5:
+                nextStep = 149
+            input("Press Enter to continue...")
+        elif step == 111:
+            # Make a Spot Hidden roll. If you succeed, go to 118. If you fail,
+            # go to 124.
+            print(self.step111)
+            check = character.skillCheck(dictionary, "SpotHiddenStr", "SpotHidden", 1)
+            if check < 4:
+                nextStep = 118
+            else:
+                nextStep = 124
+            input("Press Enter to continue...")
+        elif step == 112:
+            # You have discovered a secret. If you ever need to climb or descend this
+            # northeasterly cliff, the text will offer you a hint. At that point, if you
+            # want to try the staircase, add 100 to your current entry number and
+            # go to that new entry. If the new entry does not seem to fit, you should
+            # return to your original entry and carry on.
+            # Restore 1 Sanity point. You may check-mark the small box beside
+            # the Spot Hidden skill. Now go to 192.
+            print(self.step112)
+            dictionary["CliffSecret"] = True
+            print("You have found a secret...a new option has opened down the road...")
+            print("""Please Select an Option: 
+                        1) Try the staircase
+                        2) Return to town \n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 212
+            elif choice == "2":
+                nextStep = 192
+            input("Press Enter to continue...")
+        elif step == 113:
+            # Go to 205
+            print(self.step113)
+            nextStep = 205
+            input("Press Enter to continue...")
+        elif step == 114:
+            # Go to 120
+            print(self.step114)
+            nextStep = 120
+            input("Press Enter to continue...")
+        elif step == 115:
+            # Make a Luck roll. If you succeed, turn to 127. If you fail, turn
+            # to 135.
+            print(self.step115)
+            check = character.skillCheck(dictionary, "LuckStr", "Luck", 1)
+            if check < 4:
+                nextStep = 127
+            else:
+                nextStep = 135
+            input("Press Enter to continue...")
+        elif step == 116:
+            # Make a Luck roll. If you succeed, go to 136. If you fail, go to 129
+            print(self.step116)
+            check = character.skillCheck(dictionary, "LuckStr", "Luck", 1)
+            if check < 4:
+                nextStep = 136
+            else:
+                nextStep = 129
+            input("Press Enter to continue...")
+            
         return nextStep
