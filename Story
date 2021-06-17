@@ -4015,7 +4015,7 @@ And among the flames you will dance. """
             elif choice == "2":
                 nextStep = 120
             input("Press Enter to continue...")
-                elif step == 90:
+        elif step == 90:
             # You are casting a spell. You may commit up to 10 magic points
             # to this spell. If you have less than 10 magic points, you may spend
             # hit points on top of the magic points—but not so many that you are
