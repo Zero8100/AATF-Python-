@@ -3979,5 +3979,57 @@ And among the flames you will dance. """
                 nextStep = 100
             elif choice == "2":
                 nextStep = 121
-
+            input("Press Enter to continue...")
+        elif step == 87:
+            # You may make a Hard Spot Hidden roll. If you succeed, go to
+            # 181. Otherwise, give it up and go to 160.
+            print(self.step87)
+            check = character.skillCheck(dictionary, "SpotHiddenStr", "SpotHidden", 2)
+            if check == 2 or check == 3:
+                nextStep = 181
+            else:
+                nextStep = 160
+            input("Press Enter to continue...")
+        elif step == 88:
+            # Now go to 99
+            print(self.step88)
+            nextStep = 99
+            input("Press Enter to continue...")
+        elif step == 89:
+            # If you wish to Push the Spot Hidden roll, make the roll again.
+            # If you succeed, go to 95. If you fail, go to 101. If you would rather
+            # not risk it, go to 120.
+            print(self.step89)
+            print("""Please Select an Option: 
+                                           1) You would like to push the roll
+                                           2) You would rather not risk it\n""")
+            print("Pushing the roll allows a second attempt at the roll."
+                  "However, if you fail this time, the consequences could be dire")
+            choice = input("Selection: ")
+            if choice == "1":
+                check = character.skillCheck(dictionary, "SpotHiddenStr", "SpotHidden", 1)
+                if check < 4:
+                    nextStep = 95
+                else:
+                    nextStep = 101
+            elif choice == "2":
+                nextStep = 120
+            input("Press Enter to continue...")
+        elif step == 90:
+            # You are casting a spell. You may commit up to 10 magic points
+            # to this spell. If you have less than 10 magic points, you may spend
+            # hit points on top of the magic points—but not so many that you are
+            # reduced to 0 hit points. Decide how many points to commit, then
+            # go to 198.
+            print(self.step90)
+            print("""You are casting a spell. You may commit up to 10 magic points
+            to this spell. If you have less than 10 magic points, you may spend
+            hit points on top of the magic points—but not so many that you are
+            reduced to 0 hit points.""")
+            print("Current Magic Points: " + str(dictionary["MP"]))
+            dictionary["SpellChance"] = int(input("""Every magic point you committed gives you a 10% chance to succeed
+                  How many would you like to commit? """))
+            dictionary["SpellChance"] *= 10
+            nextStep = 198
+            input("Press Enter to continue...")
         return nextStep
