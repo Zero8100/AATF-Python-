@@ -2,10 +2,11 @@ import random
 
 
 class Character:
-    # Attributes
+    # Initialize Attributes for the main character
     def __init__(self, name, profession):
         self.disadvantage = False
         self.inAFight = False
+        self.hasChant = False
         self.hasKnife = False
         self.name = name
         self.profession = profession
@@ -71,32 +72,37 @@ class Character:
         self.throw = 20
         self.track = 10
 
+    # assigns all used story stats and descriptions of the character to a dictionary for quick reference
+    # Is initialized in main after assigning profession stats
     def createDict(self):
+        # Lists and stores all stats in alphabetical order
         dictionary = {
-            "inAFight": self.inAFight,
+            "Arch": self.archeology,
+            "ArchStr": "Archeology",
+            "Con": self.con,
+            "ConStr": "Constitution",
             "Disadvantage": self.disadvantage,
+            "HasChant": self.hasChant,
             "HasKnife": self.hasKnife,
             "HP": self.hp,
             "HPStr": "HP",
-            "Strength": self.strength,
-            "StrengthStr": "Strength",
-            "Con": self.con,
-            "ConStr": "Constitution",
-            "Size": self.size,
-            "SizeStr": "Size",
-            "Arch": self.archeology,
-            "ArchStr": "Archeology",
-            "SpotHidden": self.spotHidden,
-            "SpotHiddenStr": "Spot Hidden",
+            "inAFight": self.inAFight,
+            "Luck": self.luck,
+            "LuckStr": "Luck",
             "NaturalWorld": self.naturalWorld,
             "NaturalWorldStr": "Natural World",
-            "Luck": self.luck,
-            "LuckStr": "Luck"
+            "Size": self.size,
+            "SizeStr": "Size",
+            "SpotHidden": self.spotHidden,
+            "SpotHiddenStr": "Spot Hidden",
+            "Strength": self.strength,
+            "StrengthStr": "Strength",
         }
         return dictionary
 
+    # Used to assign Professor attributes before entering the dictionary
     def IsProfessor(self):
-        # Set Characteristics based on Profession
+        # Set Attributes to replace base stats
         self.hp = 1
         self.strength = 40
         self.con = 50
@@ -117,22 +123,34 @@ class Character:
         self.psychoAnalyze = 50
         self.creditRate = 50
 
+    # Checks Character.profession from Main to assign attributes based on selected profession
     def AssignAttributes(self):
+        # Assign Professor Attributes
         if self.profession == "Professor":
             print("...Assigning Professor Attributes...")
             self.IsProfessor()
 
+    # Takes in the dictionary, description of stat for check, the value of the stat for check, and the
+    # level of success required
+    # 1 = Normal
+    # 2 = Hard
+    # 3 = Extreme
     def SkillCheck(self, dictionary, desc, value, level):
+        # Makes a D100 dice Roll
         diceRoll = random.randint(0, 100)
+        # Sets Hard and Extreme Success values
         hardRate = dictionary[value] // 2
         extremeRate = dictionary[value] // 4
 
+        # Adds Disadvantage to the roll if it is enabled
         if dictionary["Disadvantage"] is True:
             diceRoll2 = random.randint(0, 100)
+            # Takes Highest of the 2 dice rolls to impose Disadvantage/Penalty
             if diceRoll2 > diceRoll:
                 diceRoll = diceRoll2
 
         print(self.name + "\'s " + dictionary[desc] + " is " + str(dictionary[value]))
+
         # Normal Check
         if level == 1:
             print("So you need to roll a " + str(dictionary[value]) + " or under to succeed this check")
@@ -153,7 +171,8 @@ class Character:
             elif diceRoll >= dictionary[value]:
                 passOrFail = 4
                 print("You rolled a " + str(diceRoll) + "! You have failed the check!")
-        # Hard Success Required
+
+        # Hard Success Check
         if level == 2:
             print(self.name + " needs a hard success to pass this check.")
             print("So you need to roll a " + str(hardRate) + " or under to succeed this check")
@@ -172,6 +191,8 @@ class Character:
             elif diceRoll >= dictionary[value]:
                 passOrFail = 4
                 print("You rolled a " + str(diceRoll) + "! You have failed the check!")
+
+        # Extreme Success Check
         if level == 3:
             print(self.name + " needs an extreme success to pass this check.")
             print("So you need to roll a " + str(extremeRate) + " or under to succeed this check")
