@@ -126,6 +126,12 @@ class Character:
         self.medicine = 40
         self.psychoAnalyze = 50
         self.creditRate = 50
+        luckRoll1 = random.randint(1, 6)
+        luckRoll2 = random.randint(1, 6)
+        luckRoll3 = random.randint(1, 6)
+        luckTotal = luckRoll1 + luckRoll2 + luckRoll3
+        luckTotal *= 5
+        self.luck = luckTotal
 
     # Checks Character.profession from Main to assign attributes based on selected profession
     def AssignAttributes(self):
