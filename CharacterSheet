@@ -8,6 +8,7 @@ class Character:
         self.inAFight = False
         self.hasChant = False
         self.hasKnife = False
+        self.spellChance = 0
         self.name = name
         self.profession = profession
         # Characteristics
@@ -89,10 +90,12 @@ class Character:
             "inAFight": self.inAFight,
             "Luck": self.luck,
             "LuckStr": "Luck",
+            "MP": self.mp,
             "NaturalWorld": self.naturalWorld,
             "NaturalWorldStr": "Natural World",
             "Size": self.size,
             "SizeStr": "Size",
+            "SpellChance": self.spellChance,
             "SpotHidden": self.spotHidden,
             "SpotHiddenStr": "Spot Hidden",
             "Strength": self.strength,
@@ -112,6 +115,7 @@ class Character:
         self.edu = 70
         self.int = 70
         self.pow = 60
+        self.mp = self.pow // 5
         self.sanity = self.pow
         self.dodge = self.dex // 2
         self.hp = (self.size + self.con) // 10
