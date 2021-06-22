@@ -1,0 +1,62 @@
+import random
+
+
+class EnemyChar:
+    # Initialize Attributes for an Enemy
+    def __init__(self, tag):
+        self.HP = 0
+        self.dex = 0
+        self.FB = 0
+        self.damage = 0
+        self.dodge = 0
+        self.tag = tag
+        self.damage = 0
+
+    def createDict(self):
+        # Lists and stores all stats in alphabetical order
+        dictionary = {
+            "HPstr": "HP",
+            "HP": self.HP,
+            "DexStr": "Dexterity",
+            "Dex": self.dex,
+            "DodgeStr": "Dodge",
+            "Dodge": self.dodge,
+            "FBStr": "Fighting Brawl",
+            "FB": self.FB,
+            "Damage": self.damage,
+            "Tag": self.tag,
+            "Damage": self.damage
+        }
+        return dictionary
+
+    def IsArtisan(self):
+        self.HP = 12
+        self.dex = 41
+        self.FB = 35
+        self.dodge = 20
+        self.damage = 7
+
+    def AssignStats(self):
+        if self.tag == "Artisan":
+            self.IsArtisan()
+
+    def SkillRoll(self, dictionary, desc, value):
+        # Makes a D100 dice Roll
+        diceRoll = random.randint(0, 100)
+        # Sets Hard and Extreme Success values
+        hardRate = dictionary[value] // 2
+        extremeRate = dictionary[value] // 5
+
+        print("The " + self.tag + "\'s " + dictionary[desc] + " is " + str(dictionary[value]))
+
+        if diceRoll <= dictionary[value]:
+            passOrFail = 2
+        if diceRoll <= hardRate:
+            passOrFail = 3
+        elif diceRoll <= extremeRate:
+            passOrFail = 4
+        elif diceRoll > dictionary[value]:
+            passOrFail = 1
+        print("The " + self.tag + " rolled a " + str(diceRoll))
+
+        return passOrFail
