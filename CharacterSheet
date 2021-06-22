@@ -78,28 +78,53 @@ class Character:
     def createDict(self):
         # Lists and stores all stats in alphabetical order
         dictionary = {
+            "AppStr": "Appearance",
+            "App": self.app,
             "Arch": self.archeology,
             "ArchStr": "Archeology",
             "Con": self.con,
             "ConStr": "Constitution",
+            "DexStr": "Dexterity",
+            "Dex": self.dex,
             "Disadvantage": self.disadvantage,
+            "DisguiseStr": "Disguise",
+            "Disguise": self.disguise,
+            "DriveAutoStr": "Drive Auto",
+            "DriveAuto": self.driveAuto,
+            "DodgeStr": "Dodge",
+            "Dodge": self.dodge,
+            "FastTalkStr": "Fast Talk",
+            "FastTalk": self.fastTalk,
+            "FBStr": "Fighting Brawl",
+            "FB": self.fightingBrawl,
             "HasChant": self.hasChant,
             "HasKnife": self.hasKnife,
             "HP": self.hp,
             "HPStr": "HP",
             "inAFight": self.inAFight,
+            "IntimidateStr": "Intimidation",
+            "Intimidate": self.intimidate,
             "Luck": self.luck,
             "LuckStr": "Luck",
             "MP": self.mp,
+            "Name": self.name,
             "NaturalWorld": self.naturalWorld,
             "NaturalWorldStr": "Natural World",
+            "PersuadeStr": "Persuasion",
+            "Persuade": self.persuade,
+            "PsychStr": "Psychology",
+            "Psych": self.psychology,
             "Size": self.size,
             "SizeStr": "Size",
             "SpellChance": self.spellChance,
             "SpotHidden": self.spotHidden,
             "SpotHiddenStr": "Spot Hidden",
+            "StealthStr": "Stealth",
+            "Stealth": self.stealth,
             "Strength": self.strength,
             "StrengthStr": "Strength",
+            "TrackStr": "Track",
+            "Track": self.track
         }
         return dictionary
 
@@ -150,7 +175,7 @@ class Character:
         diceRoll = random.randint(0, 100)
         # Sets Hard and Extreme Success values
         hardRate = dictionary[value] // 2
-        extremeRate = dictionary[value] // 4
+        extremeRate = dictionary[value] // 5
 
         # Adds Disadvantage to the roll if it is enabled
         if dictionary["Disadvantage"] is True:
@@ -221,7 +246,34 @@ class Character:
                 passOrFail = 4
                 print("You rolled a " + str(diceRoll) + "! You have failed the check!")
 
-        input("Press Enter to continue...\n")
+        return passOrFail
+
+    def SkillRoll(self, dictionary, desc, value):
+        # Makes a D100 dice Roll
+        diceRoll = random.randint(0, 100)
+        # Sets Hard and Extreme Success values
+        hardRate = dictionary[value] // 2
+        extremeRate = dictionary[value] // 5
+
+        # Adds Disadvantage to the roll if it is enabled
+        if dictionary["Disadvantage"] is True:
+            diceRoll2 = random.randint(0, 100)
+            # Takes Highest of the 2 dice rolls to impose Disadvantage/Penalty
+            if diceRoll2 > diceRoll:
+                diceRoll = diceRoll2
+
+        print("\n" + self.name + "\'s " + dictionary[desc] + " is " + str(dictionary[value]))
+        input("Press Enter to roll the dice...")
+
+        if diceRoll <= dictionary[value]:
+            passOrFail = 2
+        if diceRoll <= hardRate:
+            passOrFail = 3
+        elif diceRoll <= extremeRate:
+            passOrFail = 4
+        elif diceRoll >= dictionary[value]:
+            passOrFail = 1
+        print("You rolled a " + str(diceRoll))
 
         return passOrFail
 
@@ -231,5 +283,8 @@ class Character:
             death = True
         elif dictionary[value] > 0:
             death = False
-
         return death
+
+
+
+
