@@ -84,6 +84,8 @@ while gameController is True:
         gameController = False
 
 # Output - Exit text once done with game
-print("Thank you for playing! Hope you had fun!")
+print("\nThank you for playing! Hope you had fun!")
+print("This was a Waking Dream Workshop Game")
+print("Code for this project was done by Mark Leventhal and Roman Fanizza")
 
 exit(0)
