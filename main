@@ -62,7 +62,7 @@ while gameController is True:
         gameController = False
 
     # Sets step to 1 so story will start at beginning
-    step = 1
+    step = 262
 
     # Story Loop
     # Will step through story using the returned step from the StoryStep() function into var gamePlay
@@ -72,7 +72,7 @@ while gameController is True:
         # Takes in the story elements, nextStep, the character created, and dictionary for stat checking
         gameplay = newStory.StoryStep(step, mainChar, newDict)
         step = gameplay
-
+        print(str(step))
 
     # Input - Allows user to restart game loop if desired
     # If Yes - will start at top
