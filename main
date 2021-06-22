@@ -61,8 +61,6 @@ while gameController is True:
     if playGame == "N" or playGame == "n":
         gameController = False
 
-    # Sets var death to False so Story loop can start
-    death = False
     # Sets step to 1 so story will start at beginning
     step = 1
 
@@ -70,11 +68,11 @@ while gameController is True:
     # Will step through story using the returned step from the StoryStep() function into var gamePlay
     # Store gamePlay into step for clarification of the var step used earlier
     # Checks IsDead() every iteration of loop to make sure the character has not died
-    while death is False or step != 0:
+    while step != 0:
         # Takes in the story elements, nextStep, the character created, and dictionary for stat checking
         gameplay = newStory.StoryStep(step, mainChar, newDict)
         step = gameplay
-        death = mainChar.IsDead(newDict, "HP")
+
 
     # Input - Allows user to restart game loop if desired
     # If Yes - will start at top
