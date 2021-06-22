@@ -15,7 +15,7 @@ class EnemyChar:
     def createDict(self):
         # Lists and stores all stats in alphabetical order
         dictionary = {
-            "HPstr": "HP",
+            "HPStr": "HP",
             "HP": self.HP,
             "DexStr": "Dexterity",
             "Dex": self.dex,
@@ -24,8 +24,7 @@ class EnemyChar:
             "FBStr": "Fighting Brawl",
             "FB": self.FB,
             "Damage": self.damage,
-            "Tag": self.tag,
-            "Damage": self.damage
+            "Tag": self.tag
         }
         return dictionary
 
@@ -36,9 +35,19 @@ class EnemyChar:
         self.dodge = 20
         self.damage = 7
 
+    def IsArbogast(self):
+        self.dex = 38
+
+    def IsBear(self):
+        self.dex = 58
+
     def AssignStats(self):
         if self.tag == "Artisan":
             self.IsArtisan()
+        elif self.tag == "Arbogast":
+            self.IsArbogast()
+        elif self.tag == "Bear":
+            self.IsBear()
 
     def SkillRoll(self, dictionary, desc, value):
         # Makes a D100 dice Roll
