@@ -40,6 +40,9 @@ class EnemyChar:
 
     def IsBear(self):
         self.dex = 58
+        self.FB = 35
+        self.damage = 12
+        self.HP = 20
 
     def AssignStats(self):
         if self.tag == "Artisan":
