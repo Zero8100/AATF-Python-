@@ -5,11 +5,12 @@ class Character:
     # Initialize Attributes for the main character
     def __init__(self, name, profession):
         self.disadvantage = False
-        self.hasChant = False
         self.inAFight = False
+        self.hasChant = False
         self.hasKnife = False
-        self.hasDerby = False
+        self.cliffSecret = False
         self.spellChance = 0
+        self.damage = 3
         self.name = name
         self.profession = profession
         # Characteristics
@@ -85,7 +86,7 @@ class Character:
             "ArchStr": "Archeology",
             "Con": self.con,
             "ConStr": "Constitution",
-            "HasDerby": self.hasDerby,
+            "MaxDamage": self.damage,
             "DexStr": "Dexterity",
             "Dex": self.dex,
             "Disadvantage": self.disadvantage,
@@ -106,8 +107,6 @@ class Character:
             "inAFight": self.inAFight,
             "IntimidateStr": "Intimidation",
             "Intimidate": self.intimidate,
-            "LibraryUseStr": "Library Use",
-            "LibraryUse": self.libraryUse,
             "Luck": self.luck,
             "LuckStr": "Luck",
             "MP": self.mp,
@@ -161,7 +160,6 @@ class Character:
         luckTotal = luckRoll1 + luckRoll2 + luckRoll3
         luckTotal *= 5
         self.luck = luckTotal
-
     # Checks Character.profession from Main to assign attributes based on selected profession
     def AssignAttributes(self):
         # Assign Professor Attributes
@@ -198,10 +196,10 @@ class Character:
             if diceRoll <= dictionary[value]:
                 passOrFail = 1
                 levelOfSuccess = "Success"
-                if diceRoll <= dictionary[value] // 2:
+                if diceRoll <= hardRate // 2:
                     passOrFail = 2
                     levelOfSuccess = "Hard Success"
-                elif diceRoll <= dictionary[value] // 4:
+                elif diceRoll <= extremeRate // 5:
                     passOrFail = 3
                     levelOfSuccess = "Extreme Success"
 
@@ -210,6 +208,9 @@ class Character:
             elif diceRoll >= dictionary[value]:
                 passOrFail = 4
                 print("You rolled a " + str(diceRoll) + "! You have failed the check!")
+            elif diceRoll >= 96:
+                passOrFail = 5
+                print("You rolled a " + str(diceRoll) + "! Oh no....You have fumbled the check!")
 
         # Hard Success Check
         if level == 2:
@@ -230,6 +231,9 @@ class Character:
             elif diceRoll >= dictionary[value]:
                 passOrFail = 4
                 print("You rolled a " + str(diceRoll) + "! You have failed the check!")
+            elif diceRoll >= 96:
+                passOrFail = 5
+                print("You rolled a " + str(diceRoll) + "! Oh no....You have fumbled the check!")
 
         # Extreme Success Check
         if level == 3:
@@ -249,6 +253,11 @@ class Character:
             elif diceRoll >= dictionary[value]:
                 passOrFail = 4
                 print("You rolled a " + str(diceRoll) + "! You have failed the check!")
+            elif diceRoll >= 96:
+                passOrFail = 5
+                print("You rolled a " + str(diceRoll) + "! Oh no....You have fumbled the check!")
+
+        input("Press Enter to continue...\n")
 
         return passOrFail
 
@@ -287,8 +296,5 @@ class Character:
             death = True
         elif dictionary[value] > 0:
             death = False
+
         return death
-
-
-
-
