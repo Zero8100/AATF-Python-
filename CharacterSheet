@@ -5,9 +5,10 @@ class Character:
     # Initialize Attributes for the main character
     def __init__(self, name, profession):
         self.disadvantage = False
-        self.inAFight = False
         self.hasChant = False
+        self.inAFight = False
         self.hasKnife = False
+        self.hasDerby = False
         self.spellChance = 0
         self.name = name
         self.profession = profession
@@ -84,6 +85,7 @@ class Character:
             "ArchStr": "Archeology",
             "Con": self.con,
             "ConStr": "Constitution",
+            "HasDerby": self.hasDerby,
             "DexStr": "Dexterity",
             "Dex": self.dex,
             "Disadvantage": self.disadvantage,
@@ -104,6 +106,8 @@ class Character:
             "inAFight": self.inAFight,
             "IntimidateStr": "Intimidation",
             "Intimidate": self.intimidate,
+            "LibraryUseStr": "Library Use",
+            "LibraryUse": self.libraryUse,
             "Luck": self.luck,
             "LuckStr": "Luck",
             "MP": self.mp,
