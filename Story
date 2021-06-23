@@ -3282,6 +3282,14 @@ And among the flames you will dance. """
         elif step == 16:
             # Then go to 25 (can get knife)
             print(self.step16)
+            print("""You have an option to buy a knife here:
+                       1) Buy Knife
+                       2) No need for a knife, there's no danger here.\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                dictionary["MaxDamage"] += 1
+            elif choice == "2":
+                nextStep = 52
             nextStep = 25
             input("Press Enter to continue...")
         elif step == 17:
@@ -4767,6 +4775,7 @@ And among the flames you will dance. """
                 nextStep = 224
             if choice == "2":
                 nextStep = 230
+            input("Press Enter to continue...\n")
         elif step == 158:
             # Make a Stealth roll. If you succeed, you may check-mark the small
             # box beside the Stealth skill and go to 7. If you fail, go to 170.
@@ -4839,24 +4848,141 @@ And among the flames you will dance. """
                         nextStep = 190
                 if choice == "2":
                     nextStep = 184
-            elif step == 166:
-                # If you succeeded at a skill roll last night, and wish to investigate
-                # the results further, go to 178.
-                # Otherwise, go to 192.
-                print(self.step166)
-                nextStep = 192
-                input("Press Enter to continue...\n")
-            elif step == 167:
-                # If you succeeded at a skill roll last night, and wish to investigate
-                # the results further, go to 178.
-                # Otherwise, go to 192.
-                print(self.step167)
-                nextStep = 192
-                input("Press Enter to continue...\n")
+        elif step == 166:
+            # If you succeeded at a skill roll last night, and wish to investigate
+            # the results further, go to 178.
+            # Otherwise, go to 192.
+            print(self.step166)
+            nextStep = 192
+            input("Press Enter to continue...\n")
+        elif step == 167:
+            # Each claw is a separate attack. It hits you 35% of the time, and
+            # it does 3D6 worth of damage. If either claw does half, or more, of
+            # your original hit points in damage, you have taken a major wound.
+            # After resolving both claw attacks, if you have taken a major wound,
+            # go to 179. Otherwise, go to 186.
+            print(self.step167)
+            diceRoll1 = random.randint(1, 18)
+            diceRoll2 = random.randint(1, 18)
+            bear = EnemyChar("Bear")
+            bear.AssignStats()
+            enemyDict = bear.createDict()
 
+            # First attack
+            print("The Bear swipes at you!")
+            attackRoll = bear.SkillRoll(enemyDict, "FBStr", "FB")
+            dodgeRoll = character.SkillRoll(dictionary, "DodgeStr", "Dodge")
+            if attackRoll > dodgeRoll:
+                dictionary["HP"] -= diceRoll1
+                print("You were not able to dodge the " + enemyDict["Tag"] + "\'s attack!")
+                print("You take " + str(diceRoll1) + " damage!")
+                print(dictionary["Name"] + "\'s HP is now down to " + str(dictionary["HP"]))
+            elif attackRoll <= dodgeRoll:
+                print("You were able to dodge the " + enemyDict["Tag"] + "\'s attack!")
+
+            # Second Attack
+            print("The Bear swipes at you again!")
+            attackRoll2 = bear.SkillRoll(enemyDict, "FBStr", "FB")
+            dodgeRoll2 = character.SkillRoll(dictionary, "DodgeStr", "Dodge")
+
+            if attackRoll2 > dodgeRoll2:
+                dictionary["HP"] -= diceRoll1
+                print("You were not able to dodge the " + enemyDict["Tag"] + "\'s attack!")
+                print("You take " + str(diceRoll1) + " damage!")
+                print(dictionary["Name"] + "\'s HP is now down to " + str(dictionary["HP"]))
+            elif attackRoll2 <= dodgeRoll2:
+                print("You were able to dodge the " + enemyDict["Tag"] + "\'s attack!")
+
+            halfMaxHP = character.hp // 2
+            if dictionary["HP"] < halfMaxHP:
+                nextStep = 179
+            else:
+                nextStep = 186
+            input("Press Enter to continue...\n")
+        elif step == 168:
+            # Now go to 185
+            print(self.step168)
+            nextStep = 185
+            input("Press Enter to continue...\n")
+        elif step == 169:
+            # If you will learn this strange chant, go to 175.
+            # If you have had enough of Arbogast, go to 182.
+            print(self.step169)
+            print("""Choose an option from below: 
+                           1) Learn this strange chant
+                           2) You have had enough of Arbogast\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 175
+            if choice == "2":
+                nextStep = 182
+            input("Press Enter to continue...\n")
+        elif step == 170:
+            # Now go to 108
+            print(self.step170)
+            nextStep = 108
+            input("Press Enter to continue...\n")
+        elif step == 171:
+            # As you spend time with the volume, you notice insidious connections
+            # between the poems, which begin to disturb you. Make a Sanity roll.
+            # Lose 1 point if you succeed, and 1D4 points if you fail. You may gain
+            # 4 points of skill. You will never again rest quite so easily.
+            # The End.
+            print(self.step171)
+            print("""As you spend time with the volume, you notice insidious connections between the poems,
+                  which begin to disturb you. You will never again rest quite so easily...
+                  The End""")
+            nextStep = 0
+            input("Press Enter to continue...\n")
+        elif step == 172:
+            # Conduct close-quarters combat using pages 12-13 of the
+            # Quick-Start Rules. You may need to refer to page 7 first to look
+            # up your damage bonus.
+            # The combatant with the higher DEX acts first. You will take
+            # one action each combat round. You may fight back (rolling your
+            # Fighting (Brawl)) or dodge (using Dodge) against each of the
+            # bear’s attacks. Combat rolls are opposed rolls: whoever gets the
+            # best level of success wins.
+            # The black bear has a DEX of 58, and 20 hit points. Its thick
+            # furry hide absorbs the first 3 points of damage you do in each
+            # round. On the first round, it attacks once with each claw. Its Claw
+            # skill is 35% (17% half / 7% one-fifth) and each successful hit does
+            # 2D6 damage. On the second round, it attacks with one claw and
+            # bites. Its Bite skill is 25% (12% half / 5% one-fifth) and does 1D8
+            # damage. On the third round, it attacks with both claws again.
+            # If you have a knife or similar weapon, each successful hit you
+            # make does 1D4 plus your damage bonus. If you are unarmed,
+            # the damage is 1D3 plus your damage bonus.
+            # If you take a major wound, make a CON roll. If you fail, go to
+            # 193. If you are still standing after three combat rounds, go to 20
+            print(self.step2172)
+            print("You are now fighting a bear! Prepare yourself! \n")
+            bear = EnemyChar("Bear")
+            bear.AssignStats()
+            enemyDict = bear.createDict()
+
+            if enemyDict["Dex"] > dictionary["Dex"]:
+                whoFirst = dictionary["Tag"]
+            elif enemyDict["Dex"] <= dictionary["Dex"]:
+                whoFirst = dictionary["Name"]
+
+            halfMaxHP = character.hp // 2
+            cNumber = 1
+            while cNumber != 0:
+                cNumber = self.CombatRound(character, bear, cNumber, dictionary, enemyDict, whoFirst)
+
+                if cNumber == 3:
+                    nextStep = 20
+                    cNumber = 0
+                if dictionary["HP"] <= halfMaxHP:
+                    check = character.SkillCheck(dictionary, "ConStr", "Con", 1)
+                    if check == 4:
+                        nextStep = 193
+                        cNumber = 0
+                    else:
+                        print("You push through the pain and continue the fight!")
 
             input("Press Enter to continue...\n")
-
         elif step == 262:
             # Conduct close-quarters combat using pages 12-13 of the QuickStart Rules.
             # You may need to refer to page 7 first to look up your
@@ -4948,7 +5074,7 @@ And among the flames you will dance. """
 
             elif attackRoll > dodgeRoll:
                 # Attack hits
-                attackDmg = random.randint(1, enemyDictionary["Damage"])
+                attackDmg = random.randint(1, dictionary["MaxDamage"])
                 enemyDictionary["HP"] -= attackDmg
                 print("You hit the " + enemyDictionary["Tag"] + "!")
                 print("They take " + str(attackDmg) + " damage!")
@@ -4964,7 +5090,7 @@ And among the flames you will dance. """
 
             elif attackRoll > dodgeRoll:
                 # Attack hits
-                attackDmg = random.randint(1, enemyDictionary["Damage"])
+                attackDmg = random.randint(1, dictionary["MaxDamage"])
                 enemyDictionary["HP"] -= attackDmg
                 print("You hit the " + enemyDictionary["Tag"] + "!")
                 print("They take " + str(attackDmg) + " damage!")
