@@ -4731,19 +4731,131 @@ And among the flames you will dance. """
             bear = EnemyChar("Bear")
             bear.AssignStats()
             enemyDict = bear.createDict()
-            escape = bear.SkillRoll(enemyDict, "DexStr", "Dex")
-            catch = character.SkillRoll(dictionary, "DexStr", "Dex")
+            catch = bear.SkillRoll(enemyDict, "DexStr", "Dex")
+            escape = character.SkillRoll(dictionary, "DexStr", "Dex")
             if catch <= escape:
-                # He escapes
-                print("You were not able to catch up to the man!")
-                nextStep = 87
-
+                # You Escape
+                print("You were able to escape the bear!")
+                nextStep = 161
             elif catch > escape:
                 # You catch him
-                print("You were able to catch up to the man!")
-                nextStep = 172
+                print("The bear catches up to you!")
+                nextStep = 167
             input("Press Enter to continue...\n")
+        elif step == 156:
+            # To wait and observe goings on at the Beacon, go to 168.
+            # To ride out of town immediately, go to 185.
+            print(self.step156)
+            print("""Choose an option from below: 
+                           1) Wait and observe goings on at the Beacon
+                           2) Ride out of town immediately\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 168
+            if choice == "2":
+                nextStep = 185
+            input("Press Enter to continue...\n")
+        elif step == 157:
+            # If you let yourself fall asleep, go to 224.
+            # If you stay awake, go to 230
+            print(self.step157)
+            print("""Choose an option from below: 
+                           1) Let yourself fall asleep
+                           2) Stay awake\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 224
+            if choice == "2":
+                nextStep = 230
+        elif step == 158:
+            # Make a Stealth roll. If you succeed, you may check-mark the small
+            # box beside the Stealth skill and go to 7. If you fail, go to 170.
+            print(self.step158)
+            check = character.SkillCheck(dictionary, "StealthStr", "Stealth", 1)
+            if check < 4:
+                nextStep = 67
+            elif check == 4:
+                nextStep = 170
+            input("Press Enter to continue...\n")
+        elif step == 159:
+            # The Derby volume will require about a week of study to fully
+            # comprehend. If you survive this adventure, you may read 171 for more
+            # information about it.
+            # For now, go to 120.
+            print(self.step159)
+            dictionary["HasDerby"] = True
+            nextStep = 120
+            input("Press Enter to continue...\n")
+        elif step == 160:
+            # Go to 25
+            print(self.step160)
+            nextStep = 25
+            input("Press Enter to continue...\n")
+        elif step == 161:
+            # Now go to 79
+            print(self.step161)
+            nextStep = 79
+            input("Press Enter to continue...\n")
+        elif step == 162:
+            # Now go to 194
+            print(self.step162)
+            nextStep = 194
+            input("Press Enter to continue...\n")
+        elif step == 163:
+            # Now go to 157
+            print(self.step163)
+            nextStep = 157
+            input("Press Enter to continue...\n")
+        elif step == 164:
+            # To give yourself up, go to 108.
+            # To try to collapse a section of roof on them, go to 176.
+            print(self.step164)
+            print("""Choose an option from below: 
+                           1) Give yourself up
+                           2) Try to collapse a section of roof on them\n""")
+            choice = input("Selection: ")
+            if choice == "1":
+                nextStep = 108
+            if choice == "2":
+                nextStep = 176
+        elif step == 165:
+            # Make a Library Use roll. If you succeed, go to 177. If you fail,
+            # go to 184, but if you do fail, you may Push the roll by attempting it
+            # again. If you fail the Pushed roll, go to 190.
+            print(self.step165)
+            check = character.SkillCheck(dictionary, "LibraryUseStr", "LibraryUse", 1)
+            if check < 4:
+                nextStep = 67
+            elif check == 4:
+                print("""Would you like to push the roll? If you fail this time, the consequences could be dire... 
+                                                       1) Yes Push the Roll
+                                                       2) No, accept the normal failure\n""")
+                choice = input("Selection: ")
+                if choice == "1":
+                    check = character.SkillCheck(dictionary, "LibraryUseStr", "LibraryUse", 1)
+                    if check < 4:
+                        nextStep = 67
+                    elif check == 4:
+                        nextStep = 190
+                if choice == "2":
+                    nextStep = 184
+            elif step == 166:
+                # If you succeeded at a skill roll last night, and wish to investigate
+                # the results further, go to 178.
+                # Otherwise, go to 192.
+                print(self.step166)
+                nextStep = 192
+                input("Press Enter to continue...\n")
+            elif step == 167:
+                # If you succeeded at a skill roll last night, and wish to investigate
+                # the results further, go to 178.
+                # Otherwise, go to 192.
+                print(self.step167)
+                nextStep = 192
+                input("Press Enter to continue...\n")
 
+
+            input("Press Enter to continue...\n")
 
         elif step == 262:
             # Conduct close-quarters combat using pages 12-13 of the QuickStart Rules.
