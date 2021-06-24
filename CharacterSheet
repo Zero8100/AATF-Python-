@@ -12,6 +12,7 @@ class Character:
         self.hasDerby = False
         self.SpellCall = False
         self.SpellCommand = False
+        self.hasAppointment = False
         self.spellChance = 0
         self.damage = 3
         self.name = name
@@ -85,11 +86,14 @@ class Character:
         dictionary = {
             "AppStr": "Appearance",
             "App": self.app,
+            "HasAppointment": self.hasAppointment,
             "Arch": self.archeology,
             "ArchStr": "Archeology",
             "CallFlames": self.SpellCall,
             "CommandFlames": self.SpellCommand,
             "CastSpell": "Chance to cast the spell",
+            "CthuluMyth": self.cthuluMyth,
+            "CthuluMythStr": "Cthulu Mythos",
             "Con": self.con,
             "ConStr": "Constitution",
             "MaxDamage": self.damage,
@@ -106,6 +110,7 @@ class Character:
             "FastTalk": self.fastTalk,
             "FBStr": "Fighting Brawl",
             "FB": self.fightingBrawl,
+            "HasAppointment": self.hasAppointment,
             "HasChant": self.hasChant,
             "HasDerby": self.hasDerby,
             "HasKnife": self.hasKnife,
@@ -114,6 +119,8 @@ class Character:
             "inAFight": self.inAFight,
             "IntimidateStr": "Intimidation",
             "Intimidate": self.intimidate,
+            "Locksmith": self.locksmith,
+            "LocksmithStr": "Locksmith",
             "Luck": self.luck,
             "LuckStr": "Luck",
             "MP": self.mp,
@@ -124,6 +131,8 @@ class Character:
             "Persuade": self.persuade,
             "PsychStr": "Psychology",
             "Psych": self.psychology,
+            "ScienceBotanyStr": "Science (Botany)",
+            "ScienceBotany": self.science,
             "Size": self.size,
             "SizeStr": "Size",
             "SpellChance": self.spellChance,
