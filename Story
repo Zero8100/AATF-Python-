@@ -6,32 +6,32 @@ from Enemy import EnemyChar
 class MainStory:
     def __init__(self):
         self.step1 = """The sun is high in the sky, a merciless ball of heat. You feel
-        scorched by the time you reach the bus halt in front of Osborn’s
-        Drug Store. It’s a relief to put down your heavy cases and take
-        off your hat for a moment. You fan your face. It has been a long
-        summer here, in your hometown, and yet a curiously empty one.
-        You look across the street, at the grubby butcher’s shop, the
-        grocers with its faded awning, and the shabby tobacconist.
-        Mistrustful faces glare at you as they pass, eyeing your clothes
-        and luggage. It was your parents’ choice to live here, not yours.
-        You were happy down south as a child, among Providence’s
-        white-walled houses and leafy churchyards. Perhaps this new
-        job in Arkham will supply the change you need.
-        Yet everybody you know in the world lives here. You know
-        nobody in Arkham, not one soul. You ask yourself one last time
-        if you are doing the right thing.
-        The answer is here. None of your supposed friends have come
-        to see you off. You are alone. Whatever challenges lie in Arkham,
-        it will be a new life, and a brave one.
-        A small gray motor coach approaches and rattles to a stop.
-        You put your hat back on and pick up your cases.\n"""
+scorched by the time you reach the bus halt in front of Osborn’s
+Drug Store. It’s a relief to put down your heavy cases and take
+off your hat for a moment. You fan your face. It has been a long
+summer here, in your hometown, and yet a curiously empty one.
+You look across the street, at the grubby butcher’s shop, the
+grocers with its faded awning, and the shabby tobacconist.
+Mistrustful faces glare at you as they pass, eyeing your clothes
+and luggage. It was your parents’ choice to live here, not yours.
+You were happy down south as a child, among Providence’s
+white-walled houses and leafy churchyards. Perhaps this new
+job in Arkham will supply the change you need.
+Yet everybody you know in the world lives here. You know
+nobody in Arkham, not one soul. You ask yourself one last time
+if you are doing the right thing.
+The answer is here. None of your supposed friends have come
+to see you off. You are alone. Whatever challenges lie in Arkham,
+it will be a new life, and a brave one.
+A small gray motor coach approaches and rattles to a stop.
+You put your hat back on and pick up your cases.\n"""
         # Go to 263.
 
         self.step2 = """You put up a spirited resistance, but the man’s bulk and
-        determination wear you down. Finally he lands a crushing blow
-        and you drop. Blackness floods in.
-        Later, you are dimly aware of your legs being lifted and your
-        back scraping against the ground as you are dragged off.\n"""
+determination wear you down. Finally he lands a crushing blow
+and you drop. Blackness floods in.
+Later, you are dimly aware of your legs being lifted and your
+back scraping against the ground as you are dragged off.\n"""
         # You may restore 1 hit point. Now go to 108
 
         self.step3 = """Your morning exertions have left you hungry. You roam the
@@ -3217,9 +3217,9 @@ And among the flames you will dance. """
             # If your SIZ is 40, go to 23
             # If your SIZ is higher than this, go to 38.
             print(self.step8)
-            if dictionary["Size"] == "40":
+            if dictionary["Size"] == 40:
                 nextStep = 23
-            elif dictionary["Size"] > "40":
+            elif dictionary["Size"] > 40:
                 nextStep = 38
             input("Press Enter to continue...")
         elif step == 9:
@@ -3264,9 +3264,9 @@ And among the flames you will dance. """
             # To turn in for an early night, go to 63.
             print(self.step14)
             print("""Please Select an Option:
-                1) Talk to May some more
-                2) walk around outside and get your bearings
-                3) Turn in for an early night\n""")
+            1) Talk to May some more
+            2) walk around outside and get your bearings
+            3) Turn in for an early night\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 31
@@ -3284,8 +3284,8 @@ And among the flames you will dance. """
             # Then go to 25 (can get knife)
             print(self.step16)
             print("""You have an option to buy a knife here:
-                       1) Buy Knife
-                       2) No need for a knife, there's no danger here.\n""")
+            1) Buy Knife
+            2) No need for a knife, there's no danger here.\n""")
             choice = input("Selection: ")
             if choice == "1":
                 dictionary["MaxDamage"] += 1
@@ -3381,7 +3381,7 @@ And among the flames you will dance. """
             # –Look for local people with their own transport needs: go to 96.
             print(self.step25)
             print("""Please Select an Option: 
-            ( Do not repeat a previous choice. Once you have tried four options or before that, if
+            (Do not repeat a previous choice. Once you have tried four options or before that, if
             you are ready to move on select 7)
             1) Ask about transport at the local general store
             2) Seek out the village hall
@@ -3476,7 +3476,7 @@ And among the flames you will dance. """
             print(self.step32)
             print("""Please Select an Option:
             1) Secure your door with a chair and get some sleep
-             2) To stay awake all night\n""")
+            2) To stay awake all night\n""")
             choice = input("Selection: ")
 
             if choice == "1":
@@ -4282,8 +4282,8 @@ And among the flames you will dance. """
             dictionary["CliffSecret"] = True
             print("You have found a secret...a new option has opened down the road...")
             print("""Please Select an Option: 
-                        1) Try the staircase
-                        2) Return to town \n""")
+            1) Try the staircase
+            2) Return to town \n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 212
@@ -4358,15 +4358,15 @@ And among the flames you will dance. """
             # –Look for local people with their own transport needs: go to 96.
             print(self.step120)
             print("""Please Select an Option: 
-                           ( Do not repeat a previous choice. Once you have tried four options or before that, if
-                           you are ready to move on select 7)
-                                       1) Ask about transport at the local general store
-                                       2) Seek out the village hall
-                                       3) Walk down to the lower level and check out the eastern road
-                                       4) Examine the large metal structure
-                                       5) Explore the church
-                                       6) Look for local people with their own transport needs
-                                       7) Ready to move on\n""")
+            ( Do not repeat a previous choice. Once you have tried four options or before that, if
+            you are ready to move on select 7)
+            1) Ask about transport at the local general store
+            2) Seek out the village hall
+            3) Walk down to the lower level and check out the eastern road
+            4) Examine the large metal structure
+            5) Explore the church
+            6) Look for local people with their own transport needs
+            7) Ready to move on\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 16
@@ -4408,9 +4408,9 @@ And among the flames you will dance. """
             # The End.
             print(self.step123)
             print("""You have burned to death whilst grappling two teenagers!
-                                Why not try the adventure again? By making different choices you may be able
-                                to escape or outwit the people of Emberhead.
-                                The End.""")
+            Why not try the adventure again? 
+            By making different choices you may be able to escape or outwit the people of Emberhead.
+            The End.""")
             nextStep = 0
             input("Press Enter to continue...\n")
         elif step == 124:
@@ -4438,8 +4438,8 @@ And among the flames you will dance. """
             # turn to 160.
             print(self.step127)
             print("""Please Select an Option: 
-                                1) Follow the strange man
-                                2) Think it is unwise to follow \n""")
+            1) Follow the strange man
+            2) Think it is unwise to follow \n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 142
@@ -4466,8 +4466,8 @@ And among the flames you will dance. """
             # To confront the figures, go to 163.
             print(self.step131)
             print("""Please Select an Option: 
-                                            1) Retreat to the safety of the Ledbetter house
-                                            2) Confront the figures \n""")
+            1) Retreat to the safety of the Ledbetter house
+            2) Confront the figures \n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 157
@@ -4506,8 +4506,8 @@ And among the flames you will dance. """
             # turn to 160.
             print(self.step135)
             print("""Please Select an Option: 
-                    1) Give chase
-                    2) If you have better things to do \n""")
+            1) Give chase
+            2) If you have better things to do \n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 150
@@ -4520,7 +4520,7 @@ And among the flames you will dance. """
             # go to 79.
             print(self.step136)
             print("""Watching the bear has been an educational experience.
-                     You gain a skill point in Natural World!\n""")
+            You gain a skill point in Natural World!\n""")
             dictionary["NaturalWorld"] += 1
             nextStep = 160
             input("Press Enter to continue...\n")
@@ -4539,14 +4539,14 @@ And among the flames you will dance. """
             # If you succeed, go to 145. If you fail, go to 151.
             print(self.step138)
             print("""Decide how you want to influence May to leave and talk to Troy: 
-                    1) "I mean if you wouldn't mind. I know a stunning woman as yourself is busy
-                    but it would mean the world to me if you did." (Charm) 
-                    2) "Yes! This could be do or die! I need to get on that bus tomorrow or 
-                    I will lose my job!" (Fast Talk)
-                    3) "I would very much appreciate it! You never know, I could leave a handsome
-                    tip for the excellent service." (Persuade)
-                    4) "Look... if you don't go ask about Silas right now! Not even I know
-                      what could happen to you! (Intimidate)\n""")
+            1) "I mean if you wouldn't mind. I know a stunning woman as yourself is busy
+            but it would mean the world to me if you did." (Charm) 
+            2) "Yes! This could be do or die! I need to get on that bus tomorrow or 
+            I will lose my job!" (Fast Talk)
+            3) "I would very much appreciate it! You never know, I could leave a handsome
+            tip for the excellent service." (Persuade)
+            4) "Look... if you don't go ask about Silas right now! Not even I know
+            what could happen to you! (Intimidate)\n""")
             choice = input("Selection: ")
             if choice == "1":
                 check = character.SkillCheck(dictionary, "CharmStr", "Charm", 1)
@@ -4603,7 +4603,7 @@ And among the flames you will dance. """
             # World skill. Then go to 79.
             print(self.step143)
             print("""Watching the bear has been an educational experience.
-                     You gain 2 skill points in Natural World!\n""")
+            You gain 2 skill points in Natural World!\n""")
             dictionary["NaturalWorld"] += 2
             nextStep = 79
             input("Press Enter to continue...\n")
@@ -4618,8 +4618,8 @@ And among the flames you will dance. """
             # If you fail your roll, go to 194.
             print(self.step144)
             print("""Choose an option from below: 
-                           1) Try to help Silas with the engine (Drive Auto)
-                           2) Observe Silas (Hard Psychology)\n""")
+            1) Try to help Silas with the engine (Drive Auto)
+            2) Observe Silas (Hard Psychology)\n""")
             choice = input("Selection: ")
             if choice == "1":
                 check = character.SkillCheck(dictionary, "DriveAutoStr", "DriveAuto", 1)
@@ -4649,8 +4649,8 @@ And among the flames you will dance. """
             # your escape while you can, go to 120.
             print(self.step147)
             print("""Choose an option from below: 
-                           1) Investigate behind the bookcase
-                           2) Close it and make your escape while you can\n""")
+            1) Investigate behind the bookcase
+            2) Close it and make your escape while you can\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 153
@@ -4667,8 +4667,8 @@ And among the flames you will dance. """
             # To stand your ground, go to 173.
             print(self.step149)
             print("""Choose an option from below: 
-                           1) Flee from the bear
-                           2) Stand your ground\n""")
+            1) Flee from the bear
+            2) Stand your ground\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 155
@@ -4725,8 +4725,8 @@ And among the flames you will dance. """
             # grab a few books and leave, go to 159.
             print(self.step153)
             print("""Choose an option from below: 
-                           1) Risk opening one of the cliffside windows a little
-                           2) Grab a few books and leave\n""")
+            1) Risk opening one of the cliffside windows a little
+            2) Grab a few books and leave\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 165
@@ -4769,8 +4769,8 @@ And among the flames you will dance. """
             # To ride out of town immediately, go to 185.
             print(self.step156)
             print("""Choose an option from below: 
-                           1) Wait and observe goings on at the Beacon
-                           2) Ride out of town immediately\n""")
+            1) Wait and observe goings on at the Beacon
+            2) Ride out of town immediately\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 168
@@ -4782,8 +4782,8 @@ And among the flames you will dance. """
             # If you stay awake, go to 230
             print(self.step157)
             print("""Choose an option from below: 
-                           1) Let yourself fall asleep
-                           2) Stay awake\n""")
+            1) Let yourself fall asleep
+            2) Stay awake\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 224
@@ -4834,8 +4834,8 @@ And among the flames you will dance. """
             # To try to collapse a section of roof on them, go to 176.
             print(self.step164)
             print("""Choose an option from below: 
-                           1) Give yourself up
-                           2) Try to collapse a section of roof on them\n""")
+            1) Give yourself up
+            2) Try to collapse a section of roof on them\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 108
@@ -4851,8 +4851,8 @@ And among the flames you will dance. """
                 nextStep = 67
             elif check == 4:
                 print("""Would you like to push the roll? If you fail this time, the consequences could be dire... 
-                                                       1) Yes Push the Roll
-                                                       2) No, accept the normal failure\n""")
+                1) Yes Push the Roll
+                2) No, accept the normal failure\n""")
                 choice = input("Selection: ")
                 if choice == "1":
                     check = character.SkillCheck(dictionary, "LibraryUseStr", "LibraryUse", 1)
@@ -4923,8 +4923,8 @@ And among the flames you will dance. """
             # If you have had enough of Arbogast, go to 182.
             print(self.step169)
             print("""Choose an option from below: 
-                           1) Learn this strange chant
-                           2) You have had enough of Arbogast\n""")
+            1) Learn this strange chant
+            2) You have had enough of Arbogast\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 175
@@ -4944,8 +4944,8 @@ And among the flames you will dance. """
             # The End.
             print(self.step171)
             print("""As you spend time with the volume, you notice insidious connections between the poems,
-                  which begin to disturb you. You will never again rest quite so easily...
-                  The End""")
+            which begin to disturb you. You will never again rest quite so easily...
+            The End""")
             nextStep = 0
             input("Press Enter to continue...\n")
         elif step == 172:
@@ -5029,9 +5029,9 @@ And among the flames you will dance. """
             # volume and leave. Go to 120.
             print(self.step177)
             print("""Choose an option from below: 
-                                  1) Memorize Call Ye Celestial Flames
-                                  2) Memorize Command Ye Celestial Flames
-                                  3) You have already pushed your luck enough, replace the volume and leave\n""")
+            1) Memorize Call Ye Celestial Flames
+            2) Memorize Command Ye Celestial Flames
+            3) You have already pushed your luck enough, replace the volume and leave\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 197
@@ -5215,9 +5215,9 @@ And among the flames you will dance. """
             # To challenge Silas about the breakdown, go to 257.
             print(self.step194)
             print("""Choose an option from below: 
-                                  1) Look for May Ledbetter’s house
-                                  2) Ask Silas where he will spend the night
-                                  3) Challenge Silas about the breakdown\n""")
+            1) Look for May Ledbetter’s house
+            2) Ask Silas where he will spend the night
+            3) Challenge Silas about the breakdown\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 267
@@ -5261,8 +5261,8 @@ And among the flames you will dance. """
             # you fail, go to 65.
             print(self.step198)
             print("""You are casting a spell. You may commit up to 10 magic points
-                        to this spell. Every magic point you committed gives you a 10% chance to
-                        succeed. So if you committed 6 magic points, you must make a 60% roll.""")
+            to this spell. Every magic point you committed gives you a 10% chance to
+            succeed. So if you committed 6 magic points, you must make a 60% roll.""")
             print("Your current Magic Points are " + str(dictionary["MP"]))
             spellCommit = input("How many would you like to commit? ")
             if spellCommit > dictionary["MP"]:
@@ -5280,8 +5280,8 @@ And among the flames you will dance. """
             # that Silas has stranded you here, go to 214.
             print(self.step199)
             print("""Choose an option from below: 
-                                  1) Claim to have come for the festival
-                                  2) Admit that Silas has stranded you here\n""")
+            1) Claim to have come for the festival
+            2) Admit that Silas has stranded you here\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 206
@@ -5419,8 +5419,8 @@ And among the flames you will dance. """
             # To fight the riders, go to 235.
             print(self.step216)
             print("""Choose an option from below: 
-                            1) Flee into the woods
-                            2) Fight the riders\n""")
+            1) Flee into the woods
+            2) Fight the riders\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 229
@@ -5452,9 +5452,9 @@ And among the flames you will dance. """
 
             print(self.step219)
             print("""Choose an option from below: 
-                            1) Try to crack the padlock
-                            2) Physically break in to the locked workshop
-                            3) Move on to another area\n""")
+            1) Try to crack the padlock
+            2) Physically break in to the locked workshop
+            3) Move on to another area\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 225
@@ -5482,9 +5482,9 @@ And among the flames you will dance. """
             # To leave while you still can, go to 253.
             print(self.step221)
             print("""Choose an option from below: 
-                            1) Ask Arbogast about the Abenaki
-                            2) Ask him about the villagers
-                            3) Leave while you still can\n""")
+            1) Ask Arbogast about the Abenaki
+            2) Ask him about the villagers
+            3) Leave while you still can\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 227
@@ -5562,8 +5562,8 @@ And among the flames you will dance. """
             # To pretend to be asleep, go to 254.
             print(self.step230)
             print("""Choose an option from below: 
-                            1) Grab it and wrench the door open
-                            2) Pretend to be asleep\n""")
+            1) Grab it and wrench the door open
+            2) Pretend to be asleep\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 248
@@ -5576,8 +5576,8 @@ And among the flames you will dance. """
             # The End.
             print(self.step231)
             print("""You have burned to death in the Beacon! But you took the entire village with you!
-                   Why not try again? 
-                   The End.""")
+            Why not try again? 
+            The End.""")
             nextStep = 0
             input("Press Enter to continue...\n")
         elif step == 232:
@@ -5609,8 +5609,8 @@ And among the flames you will dance. """
             # go to 215.
             print(self.step234)
             print("""Choose an option from below: 
-                            1) Take refuge in a tree for the night
-                            2) Keep walking\n""")
+            1) Take refuge in a tree for the night
+            2) Keep walking\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 208
@@ -5661,8 +5661,8 @@ And among the flames you will dance. """
             # situation, go to 157.
             print(self.step236)
             print("""Choose an option from below: 
-                            1) Go fetch May and bring her here
-                            2) Return to the Ledbetter house and say nothing about the situation\n""")
+            1) Go fetch May and bring her here
+            2) Return to the Ledbetter house and say nothing about the situation\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 242
@@ -5719,8 +5719,8 @@ And among the flames you will dance. """
             # The End.
             print(self.step243)
             print("""You have burned to death in an otherworldly inferno!
-                   Why not try again? 
-                   The End.""")
+            Why not try again? 
+            The End.""")
             nextStep = 0
             input("Press Enter to continue...\n")
         elif step == 244:
@@ -5728,8 +5728,8 @@ And among the flames you will dance. """
             # 120.
             print(self.step244)
             print("""Choose an option from below: 
-                                   1) Investigate further
-                                   2) You have seen enough\n""")
+            1) Investigate further
+            2) You have seen enough\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 250
@@ -5759,8 +5759,8 @@ And among the flames you will dance. """
             # The End.
             print(self.step247)
             print("""Congratulations! You have survived this adventure.
-                   This is no small feat! You should be proud of yourself!
-                   The End.""")
+            This is no small feat! You should be proud of yourself!
+            The End.""")
             nextStep = 0
             input("Press Enter to continue...\n")
         elif step == 248:
@@ -5818,8 +5818,8 @@ And among the flames you will dance. """
             # to 266.
             print(self.step254)
             print("""Choose an option from below: 
-                                   1) Confront May
-                                   2) Wait and see what happens\n""")
+            1) Confront May
+            2) Wait and see what happens\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 260
@@ -5832,8 +5832,8 @@ And among the flames you will dance. """
             # The End.
             print(self.step255)
             print("""You have burned to death in the Beacon! However, you did briefly reach beyond this Earth...
-                   Why not try again? 
-                   The End.""")
+            Why not try again? 
+            The End.""")
             nextStep = 0
             input("Press Enter to continue...\n")
         elif step == 256:
@@ -5841,8 +5841,8 @@ And among the flames you will dance. """
             # to 262.
             print(self.step256)
             print("""Choose an option from below: 
-                                   1) Surrender without a fight
-                                   2) To fight the artisan\n""")
+            1) Surrender without a fight
+            2) To fight the artisan\n""")
             choice = input("Selection: ")
             if choice == "1":
                 nextStep = 108
@@ -5931,8 +5931,8 @@ And among the flames you will dance. """
 
                 if cNumber == 3:
                     print("""You see a narrow opening where you could circle around the Artisan:
-                                               1) Flee from the artisan
-                                              2) Stand your ground and continue to fight him!\n""")
+                    1) Flee from the artisan
+                    2) Stand your ground and continue to fight him!\n""")
                     choice = input("Selection: ")
                     if choice == "1":
                         check = character.SkillCheck(dictionary, "DexStr", "Dex", 2)
@@ -5945,6 +5945,7 @@ And among the flames you will dance. """
                 if enemyDict["HP"] <= 6:
                     nextStep = 268
                     cNumber = 0
+                    dictionary["inAFight"] = True
 
                 if dictionary["HP"] <= 0:
                     nextStep = 2
