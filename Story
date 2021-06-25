@@ -5931,8 +5931,8 @@ And among the flames you will dance. """
 
                 if cNumber == 3:
                     print("""You see a narrow opening where you could circle around the Artisan:
-                    1) Flee from the artisan
-                    2) Stand your ground and continue to fight him!\n""")
+                1) Flee from the artisan
+                2) Stand your ground and continue to fight him!\n""")
                     choice = input("Selection: ")
                     if choice == "1":
                         check = character.SkillCheck(dictionary, "DexStr", "Dex", 2)
@@ -5945,11 +5945,11 @@ And among the flames you will dance. """
                 if enemyDict["HP"] <= 6:
                     nextStep = 268
                     cNumber = 0
-                    dictionary["inAFight"] = True
 
                 if dictionary["HP"] <= 0:
                     nextStep = 2
                     cNumber = 0
+            dictionary["inAFight"] = True
             input("Press Enter to continue...\n")
         elif step == 263:
             # Look at your investigator sheet. At the top, you have spaces for eight
@@ -6053,7 +6053,7 @@ And among the flames you will dance. """
     def CombatRound(self, character, enemy, number, dictionary, enemyDictionary, first):
 
         if first == enemyDictionary["Tag"]:
-            print("The " + enemyDictionary["Tag"] + " tries to attack you!")
+            print("\nThe " + enemyDictionary["Tag"] + " tries to attack you!")
             attackRoll = enemy.SkillRoll(enemyDictionary, "FBStr", "FB")
             input("\nRoll to Dodge!")
             dodgeRoll = character.SkillRoll(dictionary, "DodgeStr", "Dodge")
@@ -6072,7 +6072,7 @@ And among the flames you will dance. """
 
             print("\nNow you try to attack the " + enemyDictionary["Tag"] + "!")
             attackRoll = character.SkillRoll(dictionary, "FBStr", "FB")
-            input("\nThey Roll to dodge!")
+            print("\nThey Roll to dodge!")
             dodgeRoll = enemy.SkillRoll(enemyDictionary, "DodgeStr", "Dodge")
 
             if attackRoll <= dodgeRoll:
@@ -6103,9 +6103,9 @@ And among the flames you will dance. """
                 print("They take " + str(attackDmg) + " damage!")
                 print(enemyDictionary["Tag"] + "\'s HP is now down to " + str(enemyDictionary["HP"]))
 
-            print("Now the " + enemyDictionary["Tag"] + " tries to attack you!")
+            print("\nNow the " + enemyDictionary["Tag"] + " tries to attack you!")
             attackRoll = enemy.SkillRoll(enemyDictionary, "FBStr", "FB")
-            input("Roll to Dodge!\n")
+            print("\nYou try to Dodge!")
             dodgeRoll = character.SkillRoll(dictionary, "DodgeStr", "Dodge")
 
             if attackRoll <= dodgeRoll:
