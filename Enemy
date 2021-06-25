@@ -1,4 +1,5 @@
 import random
+import time
 
 
 class EnemyChar:
@@ -70,6 +71,12 @@ class EnemyChar:
         extremeRate = dictionary[value] // 5
 
         print("The " + self.tag + "\'s " + dictionary[desc] + " is " + str(dictionary[value]))
+        print(".")
+        time.sleep(0.50)
+        print("..")
+        time.sleep(0.50)
+        print("...")
+        time.sleep(0.50)
 
         if diceRoll <= dictionary[value]:
             passOrFail = 2
