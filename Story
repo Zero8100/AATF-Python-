@@ -3859,7 +3859,7 @@ And among the flames you will dance. """
             print(self.step71)
             if dictionary["Prof"] == "Professor":
                 nextStep = 265
-            elif dictionary["Prof"] == "PI":
+            elif dictionary["Prof"] == "Private Investigator":
                 nextStep = 265
             elif dictionary["Prof"] == "Journalist":
                 nextStep = 239
@@ -4392,7 +4392,7 @@ And among the flames you will dance. """
             if check < 4:
                 nextStep = 132
             else:
-                nextStep = 139
+                nextStep = 130
             input("Press Enter to continue...\n")
 
         elif step == 122:
