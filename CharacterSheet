@@ -212,9 +212,9 @@ class Character:
         self.sanity = self.pow
         self.dodge = self.dex // 2
         self.hp = (self.size + self.con) // 10
-        self.artNCraft = 40
-        self.disguise = 60
-        self.law = 50
+        self.fightingBrawl = 60
+        self.disguise = 50
+        self.law = 40
         self.spotHidden = 70
         self.libraryUse = 40
         self.psychology = 50
@@ -268,18 +268,18 @@ class Character:
             print("...")
             time.sleep(0.50)
 
-            if diceRoll <= dictionary[value]:
+            if diceRoll <= dictionary[value] and diceRoll > hardRate:
                 passOrFail = 1
                 levelOfSuccess = "Success"
-                if diceRoll <= hardRate // 2:
-                    passOrFail = 2
-                    levelOfSuccess = "Hard Success"
-                elif diceRoll <= extremeRate // 5:
-                    passOrFail = 3
-                    levelOfSuccess = "Extreme Success"
-
                 print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
-
+            elif diceRoll <= hardRate and diceRoll > extremeRate:
+                passOrFail = 2
+                levelOfSuccess = "Hard Success"
+                print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
+            elif diceRoll <= extremeRate:
+                passOrFail = 3
+                levelOfSuccess = "Extreme Success"
+                print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
             elif diceRoll >= dictionary[value]:
                 passOrFail = 4
                 print("You rolled a " + str(diceRoll) + "! You have failed the check!")
@@ -298,10 +298,10 @@ class Character:
             time.sleep(0.50)
             print("...")
             time.sleep(0.50)
-            if diceRoll <= dictionary[value]:
+            if diceRoll <= dictionary[value] and diceRoll > hardRate:
                 passOrFail = 1
                 print("You rolled a " + str(diceRoll) + "! You have failed the check!")
-            if diceRoll <= hardRate:
+            elif diceRoll <= hardRate and diceRoll > extremeRate:
                 passOrFail = 2
                 levelOfSuccess = "Hard Success"
                 print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
@@ -327,10 +327,10 @@ class Character:
             time.sleep(0.50)
             print("...")
             time.sleep(0.50)
-            if diceRoll <= dictionary[value]:
+            if diceRoll <= dictionary[value] and diceRoll > hardRate:
                 passOrFail = 1
                 print("You rolled a " + str(diceRoll) + "! You have failed the check!")
-            if diceRoll <= hardRate:
+            elif diceRoll <= hardRate and diceRoll > extremeRate:
                 passOrFail = 2
                 print("You rolled a " + str(diceRoll) + "! You have failed the check!")
             elif diceRoll <= extremeRate:
@@ -360,7 +360,7 @@ class Character:
             if diceRoll2 > diceRoll:
                 diceRoll = diceRoll2
 
-        print("\n" + self.name + "\'s " + dictionary[desc] + " is " + str(dictionary[value]))
+        print(self.name + "\'s " + dictionary[desc] + " is " + str(dictionary[value]))
         input("Press Enter to roll the dice...")
         print(".")
         time.sleep(0.50)
