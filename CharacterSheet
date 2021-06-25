@@ -230,10 +230,10 @@ class Character:
             print("...Assigning Professor Attributes...")
             self.IsProfessor()
         elif self.profession == "Journalist":
-            print("...Assigning Professor Attributes...")
+            print("...Assigning Journalist Attributes...")
             self.IsJournalist()
-        elif self.profession == "PI":
-            print("...Assigning Professor Attributes...")
+        elif self.profession == "Private Investigator":
+            print("...Assigning Private Investigator Attributes...")
             self.IsPI()
 
     # Takes in the dictionary, description of stat for check, the value of the stat for check, and the
@@ -343,8 +343,6 @@ class Character:
             elif diceRoll >= 96:
                 passOrFail = 5
                 print("You rolled a " + str(diceRoll) + "! Oh no....You have fumbled the check!")
-
-        input("Press Enter to continue...\n")
 
         return passOrFail
 
