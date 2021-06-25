@@ -1,5 +1,5 @@
 import random
-
+import time
 
 class Character:
     # Initialize Attributes for the main character
@@ -261,6 +261,12 @@ class Character:
         if level == 1:
             print("So you need to roll a " + str(dictionary[value]) + " or under to succeed this check")
             input("Press Enter to roll the dice...")
+            print(".")
+            time.sleep(0.50)
+            print("..")
+            time.sleep(0.50)
+            print("...")
+            time.sleep(0.50)
 
             if diceRoll <= dictionary[value]:
                 passOrFail = 1
@@ -286,6 +292,12 @@ class Character:
             print(self.name + " needs a hard success to pass this check.")
             print("So you need to roll a " + str(hardRate) + " or under to succeed this check")
             input("Press Enter to roll the dice...")
+            print(".")
+            time.sleep(0.50)
+            print("..")
+            time.sleep(0.50)
+            print("...")
+            time.sleep(0.50)
             if diceRoll <= dictionary[value]:
                 passOrFail = 1
                 print("You rolled a " + str(diceRoll) + "! You have failed the check!")
@@ -309,6 +321,12 @@ class Character:
             print(self.name + " needs an extreme success to pass this check.")
             print("So you need to roll a " + str(extremeRate) + " or under to succeed this check")
             input("Press Enter to roll the dice...")
+            print(".")
+            time.sleep(0.50)
+            print("..")
+            time.sleep(0.50)
+            print("...")
+            time.sleep(0.50)
             if diceRoll <= dictionary[value]:
                 passOrFail = 1
                 print("You rolled a " + str(diceRoll) + "! You have failed the check!")
@@ -346,6 +364,12 @@ class Character:
 
         print("\n" + self.name + "\'s " + dictionary[desc] + " is " + str(dictionary[value]))
         input("Press Enter to roll the dice...")
+        print(".")
+        time.sleep(0.50)
+        print("..")
+        time.sleep(0.50)
+        print("...")
+        time.sleep(0.50)
 
         if diceRoll <= dictionary[value]:
             passOrFail = 2
