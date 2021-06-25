@@ -128,6 +128,7 @@ class Character:
             "NaturalWorldStr": "Natural World",
             "PersuadeStr": "Persuasion",
             "Persuade": self.persuade,
+            "Prof": self.profession,
             "PsychStr": "Psychology",
             "Psych": self.psychology,
             "ScienceBotanyStr": "Science (Botany)",
@@ -165,9 +166,11 @@ class Character:
         self.languageOwn = 40
         self.libraryUse = 60
         self.psychology = 70
-        self.medicine = 40
+        self.medicine = 50
+        self.science = 60
+        self.spotHidden = 50
         self.psychoAnalyze = 50
-        self.creditRate = 50
+        self.creditRate = 40
         self.luck = random.randint(3, 18) * 5
 
     def IsJournalist(self):
@@ -191,14 +194,15 @@ class Character:
         self.languageOwn = 40
         self.persuade = 50
         self.libraryUse = 50
+        self.disguise = 50
         self.creditRate = 20
         self.luck = random.randint(3, 18) * 5
 
     def IsPI(self):
         # Set Attributes to replace base stats
-        self.strength = 60
+        self.strength = 70
         self.con = 70
-        self.size = 70
+        self.size = 60
         self.dex = 60
         self.app = 50
         self.edu = 50
@@ -208,13 +212,15 @@ class Character:
         self.sanity = self.pow
         self.dodge = self.dex // 2
         self.hp = (self.size + self.con) // 10
-        self.languageOther = 40
-        self.languageOwn = 40
-        self.libraryUse = 60
-        self.psychology = 70
-        self.medicine = 40
-        self.psychoAnalyze = 50
-        self.creditRate = 50
+        self.artNCraft = 40
+        self.disguise = 60
+        self.law = 50
+        self.spotHidden = 70
+        self.libraryUse = 40
+        self.psychology = 50
+        self.persuade = 60
+        self.intimidate = 50
+        self.creditRate = 20
         self.luck = random.randint(3, 18) * 5
 
     # Checks Character.profession from Main to assign attributes based on selected profession
@@ -223,6 +229,12 @@ class Character:
         if self.profession == "Professor":
             print("...Assigning Professor Attributes...")
             self.IsProfessor()
+        elif self.profession == "Journalist":
+            print("...Assigning Professor Attributes...")
+            self.IsJournalist()
+        elif self.profession == "PI":
+            print("...Assigning Professor Attributes...")
+            self.IsPI()
 
     # Takes in the dictionary, description of stat for check, the value of the stat for check, and the
     # level of success required
