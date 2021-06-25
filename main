@@ -30,7 +30,7 @@ while gameController is True:
                                                                             "(Highest Stats: Int/Edu)\n"
                                                                             "(2) Journalist \n"
                                                                             "(Highest Stats: Dex/Pow)\n"
-                                                                            "(3) Private Investigator"
+                                                                            "(3) Private Investigator\n"
                                                                             "(Highest Stats: Str/Con)\n"
                                                                             "Enter number of Profession Selected: ")
 
@@ -39,7 +39,7 @@ while gameController is True:
         if professionSelect == "2":
             characterProf = "Journalist"
         if professionSelect == "3":
-            characterProf = "Private Eye"
+            characterProf = "Private Investigator"
 
         # Takes name and profession to initialize a new character
         mainChar = Character(characterName, characterProf)
