@@ -220,9 +220,8 @@ Tuesday, but he’s not due until next week.” She shrugs.
 It seems Emberhead is content to keep its distance from the
 outside world.
 You have enough money to buy one or two inexpensive everyday
-items here. Note them down on your investigator sheet. Remember
-the year is 1927! The shop stocks no weapons except a dusty hunting
-knife, which you may purchase if you want."""
+items here. The shop stocks no weapons except a dusty hunting
+knife."""
         # Then go to 25 (can get knife).
 
         self.step17 = """The floorboards creak beneath you as you cross the room. You
