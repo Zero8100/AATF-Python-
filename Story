@@ -3298,7 +3298,7 @@ And among the flames you will dance. """
             # If you fail, go to 37.
             print(self.step17)
             print("...Make a spot Hidden Roll...")
-            check = character.SkillCheck(dictionary, dictionary["spotHiddenStr"], dictionary["spotHidden"], 1)
+            check = character.SkillCheck(dictionary, dictionary["SpotHiddenStr"], dictionary["SpotHidden"], 1)
             if check < 4:
                 nextStep = 30
             elif check >= 4:
