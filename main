@@ -6,6 +6,22 @@ import time
 # This is used later in the while loop to signal if the user wishes to keep playing
 gameController = True
 
+print("\nWaking Dream Workshop Presents")
+time.sleep(0.50)
+print("..")
+time.sleep(0.50)
+print("...")
+time.sleep(0.50)
+print("""┏━━━┳┓╋╋╋╋╋╋╋╋╋╋┏━━━┓╋╋╋╋╋╋╋╋╋╋╋╋┏┓╋┏━━━━┳┓╋╋╋╋╋┏━━━┳┓
+┃┏━┓┃┃╋╋╋╋╋╋╋╋╋╋┃┏━┓┃╋╋╋╋╋╋╋╋╋╋╋┏┛┗┓┃┏┓┏┓┃┃╋╋╋╋╋┃┏━━┫┃
+┃┃╋┃┃┃┏━━┳━┓┏━━┓┃┃╋┃┣━━┳━━┳┳━┓┏━┻┓┏┛┗┛┃┃┗┫┗━┳━━┓┃┗━━┫┃┏━━┳┓┏┳━━┳━━┓
+┃┗━┛┃┃┃┏┓┃┏┓┫┃━┫┃┗━┛┃┏┓┃┏┓┣┫┏┓┫━━┫┃╋╋╋┃┃╋┃┏┓┃┃━┫┃┏━━┫┃┃┏┓┃┗┛┃┃━┫━━┫
+┃┏━┓┃┗┫┗┛┃┃┃┃┃━┫┃┏━┓┃┗┛┃┏┓┃┃┃┃┣━━┃┗┓╋╋┃┃╋┃┃┃┃┃━┫┃┃╋╋┃┗┫┏┓┃┃┃┃┃━╋━━┃
+┗┛╋┗┻━┻━━┻┛┗┻━━┛┗┛╋┗┻━┓┣┛┗┻┻┛┗┻━━┻━┛╋╋┗┛╋┗┛┗┻━━┛┗┛╋╋┗━┻┛┗┻┻┻┻━━┻━━┛
+╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋┏━┛┃
+╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋╋┗━━┛\n""")
+
+
 while gameController is True:
 
     # Creates New Story Object
@@ -55,7 +71,7 @@ while gameController is True:
 
         # Input - Queries user to check if they are ready to play
         # If input is No, this restart the character creator
-        playGame = input("Are you ready to start? ")
+        playGame = input("Are you ready to start? (Y or N) ")
         if playGame == "Y" or playGame == "y":
             gameController = True
             ready = True
