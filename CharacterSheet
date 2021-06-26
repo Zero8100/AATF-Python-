@@ -16,24 +16,6 @@ class Character:
         self.spellChance = 0
         self.damage = 3
         self.name = name
-        self.profession = professionimport random
-import time
-
-class Character:
-    # Initialize Attributes for the main character
-    def __init__(self, name, profession):
-        self.disadvantage = False
-        self.inAFight = False
-        self.hasChant = False
-        self.hasKnife = False
-        self.cliffSecret = False
-        self.hasDerby = False
-        self.SpellCall = False
-        self.SpellCommand = False
-        self.hasAppointment = False
-        self.spellChance = 0
-        self.damage = 3
-        self.name = name
         self.profession = profession
         # Characteristics
         self.hp = 1
@@ -102,8 +84,16 @@ class Character:
     def createDict(self):
         # Lists and stores all stats in alphabetical order
         dictionary = {
+            "AccountingStr": "Accounting",
+            "Accounting": self.accounting,
             "AppStr": "Appearance",
             "App": self.app,
+            "AnthropologyStr": "Anthropology",
+            "Anthropology": self.anthropology,
+            "AppraiseStr": "Appraise",
+            "Appraise": self.appraise,
+            "ArtsNCraftStr": "Arts and Crafts",
+            "ArtsNCraft": self.artNCraft,
             "Arch": self.archeology,
             "ArchStr": "Archeology",
             "CallFlames": self.SpellCall,
@@ -137,11 +127,17 @@ class Character:
             "HasChant": self.hasChant,
             "HasDerby": self.hasDerby,
             "HasKnife": self.hasKnife,
+            "HistoryStr": "History",
+            "History": self.history,
             "HP": self.hp,
             "HPStr": "HP",
             "inAFight": self.inAFight,
             "IntimidateStr": "Intimidation",
             "Intimidate": self.intimidate,
+            "JumpStr": "Jump",
+            "Jump": self.jump,
+            "LawStr": "Law",
+            "Law": self.law,
             "ListenStr": "Listen",
             "Listen": self.listen,
             "LibraryUseStr": "Library Use",
@@ -151,18 +147,28 @@ class Character:
             "Luck": self.luck,
             "LuckStr": "Luck",
             "MP": self.mp,
+            "MedicineStr": "Medicine",
+            "Medicine": self.medicine,
             "Name": self.name,
             "NaturalWorld": self.naturalWorld,
             "NaturalWorldStr": "Natural World",
+            "NavigateStr": "Navigate",
+            "Navigate": self.navigate,
+            "OccultStr": "Occult",
+            "Occult": self.occult,
             "PersuadeStr": "Persuasion",
             "Persuade": self.persuade,
             "Prof": self.profession,
             "PsychStr": "Psychology",
             "Psych": self.psychology,
+            "PsychoAnalyzeStr": "Psycho Analyze",
+            "PsychoAnalyze": self.psychoAnalyze,
             "RideStr": "Ride",
             "Ride": self.ride,
             "ScienceBotanyStr": "Science (Botany)",
             "ScienceBotany": self.science,
+            "SanityStr": "Sanity",
+            "Sanity": self.sanity,
             "Size": self.size,
             "SizeStr": "Size",
             "SpellChance": self.spellChance,
@@ -172,389 +178,10 @@ class Character:
             "Stealth": self.stealth,
             "Strength": self.strength,
             "StrengthStr": "Strength",
-            "TrackStr": "Track",
-            "Track": self.track
-        }
-        return dictionary
-
-    # Used to assign Professor attributes before entering the dictionary
-    def IsProfessor(self):
-        # Set Attributes to replace base stats
-        self.strength = 40
-        self.con = 50
-        self.size = 50
-        self.dex = 50
-        self.app = 60
-        self.edu = 70
-        self.int = 70
-        self.pow = 60
-        self.mp = self.pow // 5
-        self.sanity = self.pow
-        self.dodge = self.dex // 2
-        self.hp = (self.size + self.con) // 10
-        self.languageOther = 40
-        self.languageOwn = 40
-        self.libraryUse = 60
-        self.psychology = 70
-        self.medicine = 50
-        self.science = 60
-        self.spotHidden = 50
-        self.psychoAnalyze = 50
-        self.creditRate = 40
-        self.luck = random.randint(3, 18) * 5
-
-    def IsJournalist(self):
-        # Set Attributes to replace base stats
-        self.strength = 40
-        self.con = 60
-        self.size = 50
-        self.dex = 70
-        self.app = 60
-        self.edu = 50
-        self.int = 50
-        self.pow = 70
-        self.mp = self.pow // 5
-        self.sanity = self.pow
-        self.dodge = self.dex // 2
-        self.hp = (self.size + self.con) // 10
-        self.history = 40
-        self.artNCraft = 60
-        self.fastTalk = 60
-        self.psychology = 70
-        self.languageOwn = 40
-        self.persuade = 50
-        self.libraryUse = 50
-        self.disguise = 50
-        self.creditRate = 20
-        self.luck = random.randint(3, 18) * 5
-
-    def IsPI(self):
-        # Set Attributes to replace base stats
-        self.strength = 70
-        self.con = 70
-        self.size = 60
-        self.dex = 60
-        self.app = 50
-        self.edu = 50
-        self.int = 50
-        self.pow = 40
-        self.mp = self.pow // 5
-        self.sanity = self.pow
-        self.dodge = self.dex // 2
-        self.hp = (self.size + self.con) // 10
-        self.fightingBrawl = 60
-        self.disguise = 50
-        self.law = 40
-        self.spotHidden = 70
-        self.libraryUse = 40
-        self.psychology = 50
-        self.persuade = 60
-        self.intimidate = 50
-        self.creditRate = 20
-        self.luck = random.randint(3, 18) * 5
-
-    # Checks Character.profession from Main to assign attributes based on selected profession
-    def AssignAttributes(self):
-        # Assign Professor Attributes
-        if self.profession == "Professor":
-            print("...Assigning Professor Attributes...")
-            self.IsProfessor()
-        elif self.profession == "Journalist":
-            print("...Assigning Journalist Attributes...")
-            self.IsJournalist()
-        elif self.profession == "Private Investigator":
-            print("...Assigning Private Investigator Attributes...")
-            self.IsPI()
-
-    # Takes in the dictionary, description of stat for check, the value of the stat for check, and the
-    # level of success required
-    # 1 = Normal
-    # 2 = Hard
-    # 3 = Extreme
-    def SkillCheck(self, dictionary, desc, value, level):
-        # Makes a D100 dice Roll
-        diceRoll = random.randint(0, 100)
-        # Sets Hard and Extreme Success values
-        hardRate = dictionary[value] // 2
-        extremeRate = dictionary[value] // 5
-
-        # Adds Disadvantage to the roll if it is enabled
-        if dictionary["Disadvantage"] is True:
-            diceRoll2 = random.randint(0, 100)
-            # Takes Highest of the 2 dice rolls to impose Disadvantage/Penalty
-            if diceRoll2 > diceRoll:
-                diceRoll = diceRoll2
-
-        print(self.name + "\'s " + dictionary[desc] + " is " + str(dictionary[value]))
-
-        # Normal Check
-        if level == 1:
-            print("So you need to roll a " + str(dictionary[value]) + " or under to succeed this check")
-            input("Press Enter to roll the dice...")
-            print(".")
-            time.sleep(0.50)
-            print("..")
-            time.sleep(0.50)
-            print("...")
-            time.sleep(0.50)
-
-            if diceRoll <= dictionary[value] and diceRoll > hardRate:
-                passOrFail = 1
-                levelOfSuccess = "Success"
-                print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
-            elif diceRoll <= hardRate and diceRoll > extremeRate:
-                passOrFail = 2
-                levelOfSuccess = "Hard Success"
-                print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
-            elif diceRoll <= extremeRate:
-                passOrFail = 3
-                levelOfSuccess = "Extreme Success"
-                print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
-            elif diceRoll >= dictionary[value]:
-                passOrFail = 4
-                print("You rolled a " + str(diceRoll) + "! You have failed the check!")
-            elif diceRoll >= 96:
-                passOrFail = 5
-                print("You rolled a " + str(diceRoll) + "! Oh no....You have fumbled the check!")
-
-        # Hard Success Check
-        if level == 2:
-            print(self.name + " needs a hard success to pass this check.")
-            print("So you need to roll a " + str(hardRate) + " or under to succeed this check")
-            input("Press Enter to roll the dice...")
-            print(".")
-            time.sleep(0.50)
-            print("..")
-            time.sleep(0.50)
-            print("...")
-            time.sleep(0.50)
-            if diceRoll <= dictionary[value] and diceRoll > hardRate:
-                passOrFail = 1
-                print("You rolled a " + str(diceRoll) + "! You have failed the check!")
-            elif diceRoll <= hardRate and diceRoll > extremeRate:
-                passOrFail = 2
-                levelOfSuccess = "Hard Success"
-                print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
-            elif diceRoll <= extremeRate:
-                passOrFail = 3
-                levelOfSuccess = "Extreme Success"
-                print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
-            elif diceRoll >= dictionary[value]:
-                passOrFail = 4
-                print("You rolled a " + str(diceRoll) + "! You have failed the check!")
-            elif diceRoll >= 96:
-                passOrFail = 5
-                print("You rolled a " + str(diceRoll) + "! Oh no....You have fumbled the check!")
-
-        # Extreme Success Check
-        if level == 3:
-            print(self.name + " needs an extreme success to pass this check.")
-            print("So you need to roll a " + str(extremeRate) + " or under to succeed this check")
-            input("Press Enter to roll the dice...")
-            print(".")
-            time.sleep(0.50)
-            print("..")
-            time.sleep(0.50)
-            print("...")
-            time.sleep(0.50)
-            if diceRoll <= dictionary[value] and diceRoll > hardRate:
-                passOrFail = 1
-                print("You rolled a " + str(diceRoll) + "! You have failed the check!")
-            elif diceRoll <= hardRate and diceRoll > extremeRate:
-                passOrFail = 2
-                print("You rolled a " + str(diceRoll) + "! You have failed the check!")
-            elif diceRoll <= extremeRate:
-                passOrFail = 3
-                levelOfSuccess = "Extreme Success"
-                print("You rolled a " + str(diceRoll) + "! The roll was a " + levelOfSuccess + "!")
-            elif diceRoll >= dictionary[value]:
-                passOrFail = 4
-                print("You rolled a " + str(diceRoll) + "! You have failed the check!")
-            elif diceRoll >= 96:
-                passOrFail = 5
-                print("You rolled a " + str(diceRoll) + "! Oh no....You have fumbled the check!")
-
-        return passOrFail
-
-    def SkillRoll(self, dictionary, desc, value):
-        # Makes a D100 dice Roll
-        diceRoll = random.randint(0, 100)
-        # Sets Hard and Extreme Success values
-        hardRate = dictionary[value] // 2
-        extremeRate = dictionary[value] // 5
-
-        # Adds Disadvantage to the roll if it is enabled
-        if dictionary["Disadvantage"] is True:
-            diceRoll2 = random.randint(0, 100)
-            # Takes Highest of the 2 dice rolls to impose Disadvantage/Penalty
-            if diceRoll2 > diceRoll:
-                diceRoll = diceRoll2
-
-        print(self.name + "\'s " + dictionary[desc] + " is " + str(dictionary[value]))
-        input("Press Enter to roll the dice...")
-        print(".")
-        time.sleep(0.50)
-        print("..")
-        time.sleep(0.50)
-        print("...")
-        time.sleep(0.50)
-
-        if diceRoll <= dictionary[value]:
-            passOrFail = 2
-        if diceRoll <= hardRate:
-            passOrFail = 3
-        elif diceRoll <= extremeRate:
-            passOrFail = 4
-        elif diceRoll >= dictionary[value]:
-            passOrFail = 1
-        print("You rolled a " + str(diceRoll))
-
-        return passOrFail
-
-    def IsDead(self, dictionary, value):
-        print("Current HP: " + str(dictionary[value]))
-        if dictionary[value] <= 0:
-            death = True
-        elif dictionary[value] > 0:
-            death = False
-
-        return death
-
-        # Characteristics
-        self.hp = 1
-        self.strength = 0
-        self.con = 0
-        self.size = 0
-        self.dex = 0
-        self.app = 0
-        self.edu = 0
-        self.int = 0
-        self.pow = 0
-        self.sanity = 0
-        self.luck = 0
-        self.mp = 0
-        # Investigator Skills
-        self.accounting = 5
-        self.anthropology = 1
-        self.appraise = 5
-        self.archeology = 1
-        self.artNCraft = 5
-        self.charm = 15
-        self.climb = 20
-        self.creditRate = 0
-        self.cthuluMyth = 0
-        self.disguise = 5
-        self.dodge = self.dex // 2
-        self.driveAuto = 20
-        self.elecRepair = 10
-        self.fastTalk = 5
-        self.fightingBrawl = 25
-        self.firearmsHand = 20
-        self.firearmsRifle = 25
-        self.firstAid = 30
-        self.history = 5
-        self.intimidate = 15
-        self.jump = 20
-        self.languageOther = 1
-        self.languageOwn = self.edu
-        self.law = 5
-        self.libraryUse = 20
-        self.listen = 20
-        self.locksmith = 1
-        self.mechRepair = 10
-        self.medicine = 1
-        self.naturalWorld = 10
-        self.navigate = 10
-        self.occult = 5
-        self.opHvMach = 1
-        self.persuade = 1
-        self.pilot = 1
-        self.psychology = 10
-        self.psychoAnalyze = 1
-        self.ride = 5
-        self.science = 1
-        self.sleightOfHand = 10
-        self.spotHidden = 25
-        self.stealth = 20
-        self.survival = 10
-        self.swim = 20
-        self.throw = 20
-        self.throw = 20
-        self.track = 10
-
-    # assigns all used story stats and descriptions of the character to a dictionary for quick reference
-    # Is initialized in main after assigning profession stats
-    def createDict(self):
-        # Lists and stores all stats in alphabetical order
-        dictionary = {
-            "AppStr": "Appearance",
-            "App": self.app,
-            "Arch": self.archeology,
-            "ArchStr": "Archeology",
-            "CallFlames": self.SpellCall,
-            "CommandFlames": self.SpellCommand,
-            "CastSpell": "Chance to cast the spell",
-            "CharmStr": "Charm",
-            "Charm": self.charm,
-            "CthuluMyth": self.cthuluMyth,
-            "CthuluMythStr": "Cthulu Mythos",
-            "ClimbStr": "Climb",
-            "Climb": self.climb,
-            "Con": self.con,
-            "ConStr": "Constitution",
-            "MaxDamage": self.damage,
-            "DexStr": "Dexterity",
-            "Dex": self.dex,
-            "Disadvantage": self.disadvantage,
-            "DisguiseStr": "Disguise",
-            "Disguise": self.disguise,
-            "DriveAutoStr": "Drive Auto",
-            "DriveAuto": self.driveAuto,
-            "DodgeStr": "Dodge",
-            "Dodge": self.dodge,
-            "FastTalkStr": "Fast Talk",
-            "FastTalk": self.fastTalk,
-            "FBStr": "Fighting Brawl",
-            "FB": self.fightingBrawl,
-            "FirstAidStr": "First Aid",
-            "FirstAid": self.firstAid,
-            "HasAppointment": self.hasAppointment,
-            "HasChant": self.hasChant,
-            "HasDerby": self.hasDerby,
-            "HasKnife": self.hasKnife,
-            "HP": self.hp,
-            "HPStr": "HP",
-            "inAFight": self.inAFight,
-            "IntimidateStr": "Intimidation",
-            "Intimidate": self.intimidate,
-            "LibraryUseStr": "Library Use",
-            "LibraryUse": self.libraryUse,
-            "Locksmith": self.locksmith,
-            "LocksmithStr": "Locksmith",
-            "Luck": self.luck,
-            "LuckStr": "Luck",
-            "MP": self.mp,
-            "Name": self.name,
-            "NaturalWorld": self.naturalWorld,
-            "NaturalWorldStr": "Natural World",
-            "PersuadeStr": "Persuasion",
-            "Persuade": self.persuade,
-            "Prof": self.profession,
-            "PsychStr": "Psychology",
-            "Psych": self.psychology,
-            "RideStr": "Ride",
-            "Ride": self.ride,
-            "ScienceBotanyStr": "Science (Botany)",
-            "ScienceBotany": self.science,
-            "Size": self.size,
-            "SizeStr": "Size",
-            "SpellChance": self.spellChance,
-            "SpotHidden": self.spotHidden,
-            "SpotHiddenStr": "Spot Hidden",
-            "StealthStr": "Stealth",
-            "Stealth": self.stealth,
-            "Strength": self.strength,
-            "StrengthStr": "Strength",
+            "SurvivalStr": "Survival",
+            "Survival": self.survival,
+            "ThrowStr": "Throw",
+            "Throw": self.throw,
             "TrackStr": "Track",
             "Track": self.track
         }
