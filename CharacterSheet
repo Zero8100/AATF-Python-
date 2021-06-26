@@ -105,6 +105,8 @@ class Character:
             "CthuluMythStr": "Cthulu Mythos",
             "ClimbStr": "Climb",
             "Climb": self.climb,
+            "CreditRatingStr": "Credit Rating",
+            "CreditRating": self.creditRate,
             "Con": self.con,
             "ConStr": "Constitution",
             "MaxDamage": self.damage,
