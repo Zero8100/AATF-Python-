@@ -283,7 +283,7 @@ class Character:
     # 3 = Extreme
     def SkillCheck(self, dictionary, desc, value, level):
         # Makes a D100 dice Roll
-        diceRoll = random.randint(0, 100)
+        diceRoll = random.randint(1, 100)
         # Sets Hard and Extreme Success values
         hardRate = dictionary[value] // 2
         extremeRate = dictionary[value] // 5
